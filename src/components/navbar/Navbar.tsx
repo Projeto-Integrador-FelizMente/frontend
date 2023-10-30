@@ -26,7 +26,7 @@ function Navbar() {
               Perfil
             </Link>
 
-            <Link to='./home' className="text-indigo-800 hover:underline">
+            <Link to='./login' className="text-indigo-800 hover:underline">
               Sair
             </Link>
 
