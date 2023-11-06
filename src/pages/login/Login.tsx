@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import UsuarioLogin from '../../models/UsarioLogin';
 
-import './Login.css';
 import { AuthContext } from '../../contexts/AuthContext';
 
 function Login() {
@@ -89,7 +88,8 @@ function Login() {
             </Link>
           </p>
         </form>
-        <div className="fundoLogin hidden lg:block"></div>
+        <div className="hidden lg:block"><img src="src/assets/imagem.png" alt="imagem de fundo meditação"></img></div>
+             
       </div>
     </>
   );
