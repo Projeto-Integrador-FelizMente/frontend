@@ -1,6 +1,7 @@
 import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-// import { RotatingLines } from 'react-loader-spinner';
+import { RotatingLines } from 'react-loader-spinner';
+
 
 import UsuarioLogin from '../../models/UsarioLogin';
 
@@ -62,21 +63,18 @@ function Login() {
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
-
-          {/* Animação de Loading */}
           <button
             type='submit'
-            className="rounded bg-blue-500 flex justify-center
-                                   hover:bg-yellow-500 text-white w-1/2 py-2">
-            {/* {isLoading ? <RotatingLines
+            className="rounded bg-blue-500 flex justify-center hover:bg-yellow-500 text-white w-1/2 py-2">
+             {isLoading ? <RotatingLines
               strokeColor="white"
               strokeWidth="5"
               animationDuration="0.75"
               width="24"
               visible={true}
-            /> : */}
+            /> : 
             <span>Entrar</span>
-            {/* }   <-- lembrar de colocar essa chave */}
+             }
           </button>
 
           <hr className="border-slate-800 w-full" />

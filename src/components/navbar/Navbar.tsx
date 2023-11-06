@@ -17,30 +17,28 @@ function Navbar() {
 
   return (
     <>
-      {/* <div className='w-full bg-yellow-300 text-white */}
-              {/* flex justify-center'> */}
-        <div className="bg-gradient-to-r from-yellow-300 to-pink-400">
-        <div className="container flex justify-between text-lg -0">
-          
-          <div className="flex items-center"> <img className="w-16 m-3" src="src/assets/LogoFelizMente.png" alt="Logo Felizmente" />
-          <label className="text-violet-950 text-3xl font-bold">FelizMente</label>
+      <div className="w-full bg-gradient-to-r from-yellow-300 to-pink-400">
+
+        <div className="container flex flex-wrap justify-between">
+          <div className="flex items-center"> 
+            <img className="w-16 m-3" src="src/assets/LogoFelizMente.png" alt="Logo Felizmente" />
+            <label className="text-violet-950 text-3xl font-bold">FelizMente</label>
           </div>
 
-  
-          <div className='flex items-center flex gap-4 font-serif'>
-            <Link to='./home'>
+          <div className='items-center flex gap-4 font-serif '>
+            <Link to='./home' className="hover:underline">
               Postagens
             </Link>
 
-            <Link to='./home'>
+            <Link to='./home' className="hover:underline">
               Temas
             </Link>
 
-            <Link to='./home'>
+            <Link to='./home' className="hover:underline">
               Cadastrar tema
             </Link>
 
-            <Link to='./home'>
+            <Link to='./home' className="hover:underline">
               Perfil
             </Link>
 

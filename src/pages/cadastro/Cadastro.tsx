@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
-// import { RotatingLines } from 'react-loader-spinner'
+import { RotatingLines } from 'react-loader-spinner'
 import { useNavigate } from 'react-router-dom'
 
 import { cadastrarUsuario } from '../../services/Service'
@@ -158,15 +158,15 @@ function Cadastro() {
             className='rounded text-white bg-indigo-400 hover:bg-indigo-900 w-1/2 
                                            py-2 flex justify-center'
             type='submit'>
-            {/* {isLoading ? <RotatingLines
+            {isLoading ? <RotatingLines
               strokeColor="white"
               strokeWidth="5"
               animationDuration="0.75"
               width="24"
               visible={true}
-            /> : */}
+            /> : 
             <span>Cadastrar</span>
-            {/* }   <-- lembrar de colocar essa chave */}
+             }
           </button>
         </div>
       </form>
