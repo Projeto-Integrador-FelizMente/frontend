@@ -110,6 +110,20 @@ function Cadastro() {
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
+
+        <div className="flex flex-col w-full">
+          <label htmlFor="tipo">Tipo de usuário</label>
+          <input
+            type="text"
+            id="tipo"
+            name="tipo"
+            placeholder="Tipo"
+            className="border-2 border-slate-700 rounded p-2"
+            value={usuario.tipo}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+          />
+        </div>
+
         <div className="flex flex-col w-full">
           <label htmlFor="senha">Senha</label>
           <input
