@@ -65,16 +65,17 @@ function Login() {
           </div>
           <button
             type='submit'
-            className="rounded bg-blue-500 flex justify-center hover:bg-yellow-500 text-white w-1/2 py-2">
-             {isLoading ? <RotatingLines
+            className="rounded bg-blue-500 flex justify-center
+                                   hover:bg-yellow-500 text-white w-1/2 py-2">
+            {isLoading ? <RotatingLines
               strokeColor="white"
               strokeWidth="5"
               animationDuration="0.75"
               width="24"
               visible={true}
-            /> : 
-            <span>Entrar</span>
-             }
+            /> :
+              <span>Entrar</span>
+            }
           </button>
 
           <hr className="border-slate-800 w-full" />
