@@ -6,6 +6,7 @@ import Login from './pages/login/Login';
 import Cadastro from './pages/cadastro/Cadastro';
 import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
+import Postagem from './pages/postagem/Postagem';
 
 function App() {
   return (
@@ -15,10 +16,11 @@ function App() {
           <Navbar />
           <div className='min-h-[80vh]'>
             <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
+              <Route path="/postagens" element={<Postagem />} />
             </Routes>
           </div>
           <Footer />
