@@ -26,19 +26,19 @@ function Navbar() {
           </div>
 
           <div className='items-center flex gap-4 font-serif '>
-            <Link to='./home' className="hover:underline">
+            <Link to='/home' className="hover:underline">
               Postagens
             </Link>
 
-            <Link to='./home' className="hover:underline">
+            <Link to='/temas' className="hover:underline">
               Temas
             </Link>
 
-            <Link to='./home' className="hover:underline">
+            <Link to='/cadastroTema' className="hover:underline">
               Cadastrar tema
             </Link>
 
-            <Link to='./home' className="hover:underline">
+            <Link to='/home' className="hover:underline">
               Perfil
             </Link>
 
