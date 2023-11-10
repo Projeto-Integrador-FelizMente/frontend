@@ -1,12 +1,18 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 
-import Home from './pages/home/Home';
-import Login from './pages/login/Login';
-import Cadastro from './pages/cadastro/Cadastro';
-import Footer from './components/footer/Footer';
-import Navbar from './components/navbar/Navbar';
-import Postagem from './pages/postagem/Postagem';
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
+import Cadastro from "./pages/cadastro/Cadastro";
+import Footer from "./components/footer/Footer";
+import Navbar from "./components/navbar/Navbar";
+// import Postagem from './pages/postagem/Postagem';
+import ListaPostagens from './components/postagens/listaPostagens/ListaPostagens';
+import FormularioPostagem from './components/postagens/formularioPostagem/FormularioPostagem';
+import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
+import ListaTemas from "./components/temas/listaTemas/ListaTemas";
+import FormularioTema from "./components/temas/formularioTema/FormularioTema";
+import DeletarTema from "./components/temas/deletarTema/DeletarTema";
 
 function App() {
   return (
@@ -14,13 +20,20 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Navbar />
-          <div className='min-h-[80vh]'>
+          <div className="min-h-[80vh]">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/cadastro" element={<Cadastro />} />
-              <Route path="/postagens" element={<Postagem />} />
+              <Route path="/postagens" element={<ListaPostagens />} />
+              <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
+              <Route path="/editarPostagem/:id" element={<FormularioPostagem />} />
+              <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
+              <Route path="/tema" element={<ListaTemas />} />
+              <Route path="/cadastrarTema" element={<FormularioTema />} />
+              <Route path="/editarTema/:id" element={<FormularioTema />} />
+              <Route path="/deletarTema/:id" element={<DeletarTema />} />
             </Routes>
           </div>
           <Footer />

@@ -19,7 +19,7 @@ function CardPostagens({ post }: CardPostagensProps) {
                 <div className='p-4'>
                     <h4 className='text-lg font-semibold uppercase'>{post.titulo}</h4>
                     <p>{post.texto}</p>
-                    <p>Tema: {post.tema?.descricao}</p>
+                    <p>Tema: {post.tema?.nome}</p>
                     <p>Data: {new Intl.DateTimeFormat(undefined, {
                         dateStyle: 'full',
                         timeStyle: 'medium',

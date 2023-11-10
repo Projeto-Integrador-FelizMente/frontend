@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, ReactNode, useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 
@@ -15,7 +15,7 @@ function FormularioPostagem() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [temas, setTemas] = useState<Tema[]>([])
 
-    const [tema, setTema] = useState<Tema>({ id: 0, descricao: '', })
+    const [tema, setTema] = useState<Tema>({ id: 0, nome: '', descricao: '', })
     const [postagem, setPostagem] = useState<Postagem>({} as Postagem)
 
     const { id } = useParams<{ id: string }>()
@@ -32,7 +32,7 @@ function FormularioPostagem() {
     }
 
     async function buscarTemaPorId(id: string) {
-        await buscar(`/temas/${id}`, setTema, {
+        await buscar(`/tema/${id}`, setTema, {
             headers: {
                 Authorization: token,
             },
@@ -40,7 +40,7 @@ function FormularioPostagem() {
     }
 
     async function buscarTemas() {
-        await buscar('/temas', setTemas, {
+        await buscar('/tema', setTemas, {
             headers: {
                 Authorization: token,
             },
@@ -107,7 +107,7 @@ function FormularioPostagem() {
 
         } else {
             try {
-                await cadastrar(`/postagens/cadastrar`, postagem, setPostagem, {
+                await cadastrar(`/postagens`, postagem, setPostagem, {
                     headers: {
                         Authorization: token,
                     },
@@ -127,6 +127,8 @@ function FormularioPostagem() {
 
         setIsLoading(false)
         retornar()
+        
+        
     }
 
     const carregandoTema = tema.descricao === '';
@@ -152,7 +154,7 @@ function FormularioPostagem() {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="titulo">Texto da Postagem</label>
+                    <label htmlFor="texto">Texto da Postagem</label>
 
                     <input
                         value={postagem.texto}
@@ -166,6 +168,31 @@ function FormularioPostagem() {
                 </div>
 
                 <div className="flex flex-col gap-2">
+                    <label htmlFor="link">link da Postagem</label>
+
+                    <input
+                        value={postagem.link}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Adicione aqui o link da Postagem"
+                        name="link"
+                        required
+                        className="border-2 border-slate-700 rounded p-2"
+                    />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                    <p>Estado da Postagem</p>
+                    <select name="estado" id="estado" className='border p-2 border-slate-800 rounded'
+                        onChange={(e) => buscarTemaPorId(e.currentTarget.value)}
+                    >
+                        <option value="" selected disabled>Selecione um Tema</option>
+                            <option value={postagem.estado}>Ativo</option>
+                            <option value={postagem.estado}>Inativo</option>
+                    </select>
+                </div>
+
+                <div className="flex flex-col gap-2">
                     <p>Tema da Postagem</p>
                     <select name="tema" id="tema" className='border p-2 border-slate-800 rounded'
                         onChange={(e) => buscarTemaPorId(e.currentTarget.value)}
@@ -173,17 +200,20 @@ function FormularioPostagem() {
                         <option value="" selected disabled>Selecione um Tema</option>
                         {temas.map((tema) => (
                             <>
-                                <option value={tema.id} >{tema.descricao}</option>
+                                <option value={tema.id} >{tema.nome}</option>
                             </>
                         ))}
                     </select>
                 </div>
+                
                 <button
+                    
                     type='submit'
                     disabled={carregandoTema}
                     className='flex justify-center rounded disabled:bg-slate-200 bg-indigo-400 
                             hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto py-2'
-                >
+                >   
+                    
                     {isLoading ?
                         <RotatingLines
                             strokeColor="white"
@@ -191,7 +221,7 @@ function FormularioPostagem() {
                             animationDuration="0.75"
                             width="24"
                             visible={true}
-                        /> :
+                        /> :                       
                         <span>Confirmar</span>
                     }
                 </button>

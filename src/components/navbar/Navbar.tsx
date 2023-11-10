@@ -20,19 +20,15 @@ function Navbar() {
 
     component = (
         <div className="flex gap-4">
-          <Link to='./postagens' className="hover:underline">
+          <Link to='/postagens' className="hover:underline">
             Postagens
           </Link>
 
-          <Link to='./home' className="hover:underline">
-            Temas
-          </Link>
+            <Link to='/tema' className="hover:underline">
+              Temas
+            </Link>
 
-          <Link to='./home' className="hover:underline">
-            Cadastrar tema
-          </Link>
-
-          <Link to='./home' className="hover:underline">
+          <Link to='/home' className="hover:underline">
             Perfil
           </Link>
           <Link to="" onClick={logout} className="hover:underline">
@@ -63,7 +59,7 @@ function Navbar() {
             <div className="container flex flex-wrap justify-between">
               <div className="flex items-center">
                 <Link to='./home' className="hover:underline">
-                  <img className="w-16 m-3" src="src/assets/LogoFelizMente.png" alt="Logo Felizmente" />
+                  <img className="w-16 m-3" src="https://i.imgur.com/eO3G9kQ.png" alt="Logo Felizmente" />
                 </Link>
                 <Link to='./home' className="hover:underline">
                   <label className="text-violet-950 text-3xl font-bold">FelizMente</label>

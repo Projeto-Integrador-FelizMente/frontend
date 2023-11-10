@@ -1,8 +1,8 @@
 import Popup from 'reactjs-popup';
-import FormularioPostagem from '../formularioPostagem/FormularioPostagem';
+import FormularioPostagem from '../formularioTema/FormularioTema';
 import { Plus } from '@phosphor-icons/react'
 import 'reactjs-popup/dist/index.css';
-import './ModalPostagem.css'
+import './ModalTema.css'
 
 function ModalPostagem() {
     return (
@@ -15,6 +15,7 @@ function ModalPostagem() {
             >
                 <FormularioPostagem />
             </Popup>
+
         </>
     );
 }
