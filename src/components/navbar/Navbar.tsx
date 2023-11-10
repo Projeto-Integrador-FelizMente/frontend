@@ -28,7 +28,7 @@ function Navbar() {
               Temas
             </Link>
 
-          <Link to='/home' className="hover:underline">
+          <Link to='/perfil' className="hover:underline">
             Perfil
           </Link>
           <Link to="" onClick={logout} className="hover:underline">
@@ -40,11 +40,11 @@ function Navbar() {
   } else{
     componentDeslog = (
       <div className="flex gap-4"> 
-        <Link to='./login' className="hover:underline border-l-pink-400">
+        <Link to='/login' className="hover:underline border-l-pink-400">
                 Logar
         </Link>
 
-              <Link to="./cadastro" className="hover:underline">
+              <Link to="/cadastro" className="hover:underline">
                 Cadastrar
               </Link>
       </div>
@@ -61,7 +61,7 @@ function Navbar() {
                 <Link to='./home' className="hover:underline">
                   <img className="w-16 m-3" src="https://i.imgur.com/eO3G9kQ.png" alt="Logo Felizmente" />
                 </Link>
-                <Link to='./home' className="hover:underline">
+                <Link to='/home' className="hover:underline">
                   <label className="text-violet-950 text-3xl font-bold">FelizMente</label>
                 </Link>
               </div>
