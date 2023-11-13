@@ -15,24 +15,12 @@ import DeletarTema from "./components/temas/deletarTema/DeletarTema";
 import Perfil from './pages/perfil/Perfil';
 import Contato from "./pages/contato/Contato";
 
-// import { useContext, ReactNode } from "react"
-// import { AuthContext } from "./contexts/AuthContext"
-
 function App() {
-
-  // const { usuario } = useContext(AuthContext)
-  // let component: ReactNode
-  // if (usuario.token !== "") {
-  //   component = (
-  //     <Footer/>
-  //   )
-  // }
   return (
     <>
       <AuthProvider>
         <BrowserRouter>
           <Navbar />
-          
           <div className="min-h-[80vh]">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -51,7 +39,7 @@ function App() {
               <Route path="/contato" element={<Contato />} />
             </Routes>
           </div>
-          {<Footer />}
+          <Footer />
         </BrowserRouter>
       </AuthProvider>
     </>
