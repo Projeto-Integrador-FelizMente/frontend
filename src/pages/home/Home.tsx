@@ -1,8 +1,8 @@
-// import { useContext } from "react"
-// import { AuthContext } from "../../context/AuthContext"
+
 import './Home.css'
 function Home() {
 
+  
   return (
     <>
       <div className="bg-amber-100 flex justify-center">
@@ -36,6 +36,7 @@ function Home() {
       <div className="fundoHome hidden lg:block "></div>
 
     </div >
+   
     </>
   )
 }
