@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 function Footer() {
 
-  let data = new Date().getFullYear()
+  const data = new Date().getFullYear()
 
   return (
     <>
@@ -12,7 +12,7 @@ function Footer() {
           </p>
 
           <div className='' >
-            <Link to="/contatos" className='hover:underline'>
+            <Link to="/contato" className='hover:underline'>
               <p className='text-lg'>Contatos</p>
             </Link>
           </div>
