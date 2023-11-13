@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { AuthContext } from '../../contexts/AuthContext'
-import ListaPostagens from '../../components/postagens/listaPostagens/ListaPostagens'
+import ListaPostagensById from '../../components/postagens/listaPostagensById/ListaPostagensById'
 
 function Perfil() {
 
@@ -39,7 +39,7 @@ function Perfil() {
                 </div>
                 <div className='mx-auto text-center ml-2'>
                     <h1 className='text-xl font-bold underline'>Minhas Postagens</h1>
-                    <ListaPostagens/>
+                    <ListaPostagensById/>
                 </div>
             </div>
         </>

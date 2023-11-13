@@ -1,12 +1,12 @@
 import { createContext, ReactNode, useState } from "react";
 
-import UsuarioLogin from "../models/UsarioLogin";
+import UserLogin from "../models/UserLogin";
 import { login } from "../services/Service";
 
 interface AuthContextProps {
-  usuario: UsuarioLogin;
+  usuario: UserLogin;
   handleLogout(): void;
-  handleLogin(usuario: UsuarioLogin): Promise<void>;
+  handleLogin(usuario: UserLogin): Promise<void>;
   isLoading: boolean;
 }
 
@@ -17,7 +17,7 @@ interface AuthProviderProps {
 export const AuthContext = createContext({} as AuthContextProps);
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [usuario, setUsuario] = useState<UsuarioLogin>({
+  const [usuario, setUsuario] = useState<UserLogin>({
     id: 0,
     nome: "",
     usuario: "",
@@ -29,7 +29,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  async function handleLogin(userLogin: UsuarioLogin) {
+  async function handleLogin(userLogin: UserLogin) {
     setIsLoading(true);
     try {
       await login(`/usuarios/logar`, userLogin, setUsuario);

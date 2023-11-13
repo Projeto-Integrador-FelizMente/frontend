@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dna } from 'react-loader-spinner';
-
 
 import { buscar } from '../../../services/Service';
 import { AuthContext } from '../../../contexts/AuthContext';
@@ -10,8 +9,7 @@ import Postagem from '../../../models/Postagem';
 import CardPostagens from '../cardPostagens/CardPostagens';
 import ModalPostagem from '../modalPostagem/ModalPostagem';
 
-function ListaPostagens() {
-
+function ListaPostagensById() {
     const navigate = useNavigate();
 
     const [postagens, setPostagens] = useState<Postagem[]>([]);
@@ -25,28 +23,25 @@ function ListaPostagens() {
                 headers: {
                     Authorization: token,
                 },
-            })
-
+            });
         } catch (error: any) {
             if (error.toString().includes('403')) {
-                alert('O token expirou, favor logar novamente')
-                handleLogout()
+                alert('O token expirou, favor logar novamente');
+                handleLogout();
             }
         }
     }
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado')
+            alert('Você precisa estar logado');
             navigate('/');
         }
-    }, [token])
+    }, [token, navigate]);
 
     useEffect(() => {
-        buscarPostagens()
-    }, [postagens.length])
-
-    console.log(postagens)
+        buscarPostagens();
+    }, [token]);
 
     return (
         <>
@@ -62,20 +57,17 @@ function ListaPostagens() {
             )}
             <div className='flex'>
                 <div className='container mx-auto my-4 
-        grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-
-                    {postagens.map((postagem) => (
-                        <CardPostagens key={postagem.id} post={postagem} />
-                    ))}
-
+                    grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                    {postagens
+                        .filter((postagem) => postagem.user?.id === usuario.id)
+                        .map((filteredPostagem) => (
+                            <CardPostagens key={filteredPostagem.id} post={filteredPostagem} />
+                        ))}
                 </div>
-                
             </div>
-            
-                <ModalPostagem />
-            
+            <ModalPostagem />
         </>
-    )
+    );
 }
 
-export default ListaPostagens
+export default ListaPostagensById;

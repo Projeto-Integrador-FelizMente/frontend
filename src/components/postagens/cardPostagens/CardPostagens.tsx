@@ -18,7 +18,7 @@ function CardPostagens({ post }: CardPostagensProps) {
                     <p className='text-amber-600 font-bold'>Status: {post.estado}</p>
                     <p>{post.texto}</p>
                     <p>Tema: {post.tema?.nome}</p>
-
+                    <p>Usuario: {post.user?.nome}</p>
                     <p>{post.link}</p>
                     <p>Data: {new Intl.DateTimeFormat(undefined, {
                         dateStyle: 'full',

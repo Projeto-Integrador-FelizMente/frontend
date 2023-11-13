@@ -1,5 +1,5 @@
 import Tema from './Tema';
-import Usuario from './Usuario';
+import User from './User';
 
 export default interface Postagem {
   id: number;
@@ -9,5 +9,5 @@ export default interface Postagem {
   link: string;
   data: string;
   tema: Tema | null;
-  usuario: Usuario | null;
+  user: User | null;
 }
