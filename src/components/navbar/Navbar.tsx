@@ -19,16 +19,16 @@ function Navbar() {
   if (usuario.token !== "") {
 
     component = (
-      <div className="flex gap-4">
+      <div className="flex gap-4 text-xl ">
         <Link to='/postagens' className="hover:underline">
           Postagens
         </Link>
 
-        <Link to='/tema' className="hover:underline">
+        <Link to='/tema' className="hover:underline ">
           Temas
         </Link>
 
-        <Link to='/perfil' className="hover:underline">
+        <Link to='/perfil' className="hover:underline ">
           Perfil
         </Link>
         <Link to="" onClick={logout} className="hover:underline">
@@ -40,13 +40,13 @@ function Navbar() {
   } else {
     if (url_atual !== "/login" && url_atual !== "/cadastro")
     component = (
-        <div className="flex gap-4">
+        <div className="flex gap-4 text-xl p-8 ">
 
-          <Link to='/login' className="hover:underline border-l-pink-400">
+          <Link to='/login' className="hover:underline hover:text-lime-500">
             Logar
           </Link>
 
-          <Link to="/cadastro" className="hover:underline">
+          <Link to="/cadastro" className="hover:underline hover:text-lime-500">
             Cadastrar
           </Link>
         </div>
@@ -59,11 +59,13 @@ function Navbar() {
 
         <div className="container flex flex-wrap justify-between">
           <div className="flex items-center">
-            <Link to='./home' className="hover:underline">
+            <Link to='./home' className="hover:underline ">
               <img className="w-16 m-3" src="https://i.imgur.com/eO3G9kQ.png" alt="Logo Felizmente" />
             </Link>
-            <Link to='/home' className="hover:underline">
-              <label className="text-violet-950 text-3xl font-bold">FelizMente</label>
+            <Link to='/home'>
+              <label className="text-violet-950 text-3xl font-bold cursor-pointer hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-purple-400 to-pink-600">
+                FelizMente
+                </label>
             </Link>
           </div>
           <div className='items-center flex font-serif '>

@@ -127,9 +127,22 @@ function FormularioPostagem() {
 
         setIsLoading(false)
         retornar()
-        
-        
+
     }
+
+    console.log(postagem)
+    const [estadoSelecionado, setEstadoSelecionado] = useState('');
+
+    const handleSelectChange = (event) => {
+        const selectedValue = event.target.value;
+        setEstadoSelecionado(selectedValue);
+
+        setPostagem((prevPostagem) => ({
+            ...prevPostagem,
+            estado: (id !== undefined && selectedValue === 'Inativo') ? 'Inativo' : 'Ativo',
+        }));
+    };
+
 
     const carregandoTema = tema.descricao === '';
 
@@ -183,13 +196,22 @@ function FormularioPostagem() {
 
                 <div className="flex flex-col gap-2">
                     <p>Estado da Postagem</p>
-                    <select name="estado" id="estado" className='border p-2 border-slate-800 rounded'
-                        onChange={(e) => buscarTemaPorId(e.currentTarget.value)}
+                    <select
+                        name="estado"
+                        id="estado"
+                        className='border p-2 border-slate-800 rounded'
+                        onChange={handleSelectChange}
+                        value={estadoSelecionado}
                     >
-                        <option value="" selected disabled>Selecione um Tema</option>
-                            <option value={postagem.estado}>Ativo</option>
-                            <option value={postagem.estado}>Inativo</option>
+                        <option value="" disabled>Selecione um Estado</option>
+                        <option value="Ativo">Ativo</option>
+                        {id !== undefined && (
+                            <option value="Inativo" disabled={id === undefined}>
+                                Inativo
+                            </option>
+                        )}
                     </select>
+
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -205,15 +227,15 @@ function FormularioPostagem() {
                         ))}
                     </select>
                 </div>
-                
+
                 <button
-                    
+
                     type='submit'
                     disabled={carregandoTema}
                     className='flex justify-center rounded disabled:bg-slate-200 bg-indigo-400 
                             hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto py-2'
-                >   
-                    
+                >
+
                     {isLoading ?
                         <RotatingLines
                             strokeColor="white"
@@ -221,7 +243,7 @@ function FormularioPostagem() {
                             animationDuration="0.75"
                             width="24"
                             visible={true}
-                        /> :                       
+                        /> :
                         <span>Confirmar</span>
                     }
                 </button>
