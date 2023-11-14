@@ -46,7 +46,6 @@ function ListaPostagens() {
         buscarPostagens()
     }, [postagens.length])
 
-    console.log(postagens)
 
     return (
         <>

@@ -72,7 +72,7 @@ function FormularioPostagem() {
             ...prevPostagem,
             [e.target.name]: e.target.value,
             tema: tema,
-            usuario: usuario,
+            user: usuario,
         }));
     }
 
