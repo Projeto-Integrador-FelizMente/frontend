@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import Postagem from '../../../models/Postagem'
-import { ReactNode, useState} from 'react'
+import { useState} from 'react'
 
 interface CardPostagensProps {
     post: Postagem
