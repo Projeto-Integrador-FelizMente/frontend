@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { AuthContext } from '../../contexts/AuthContext'
-import ListaPostagensById from '../../components/postagens/listaPostagensById/ListaPostagensById'
+import ListaPostagensById from '../../components/postagens/listaPostagens/ListaPostagensById'
 
 function Perfil() {
 

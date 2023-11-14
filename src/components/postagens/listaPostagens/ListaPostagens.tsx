@@ -7,8 +7,7 @@ import { buscar } from '../../../services/Service';
 import { AuthContext } from '../../../contexts/AuthContext';
 
 import Postagem from '../../../models/Postagem';
-import CardPostagens from '../cardPostagens/CardPostagens';
-import ModalPostagem from '../modalPostagem/ModalPostagem';
+import CardPostagensFeed from '../cardPostagens/CardPostagemFeed';
 
 function ListaPostagens() {
 
@@ -61,17 +60,16 @@ function ListaPostagens() {
             )}
             <div className='flex'>
                 <div className='container mx-auto my-4 
-        grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+        grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4'>
 
                     {postagens.map((postagem) => (
-                        <CardPostagens key={postagem.id} post={postagem} />
+                        <CardPostagensFeed key={postagem.id} post={postagem} />
                     ))}
 
                 </div>
                 
             </div>
             
-                <ModalPostagem />
             
         </>
     )

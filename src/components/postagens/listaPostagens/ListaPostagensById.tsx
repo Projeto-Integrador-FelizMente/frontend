@@ -55,7 +55,7 @@ function ListaPostagensById() {
                     wrapperClass="dna-wrapper mx-auto"
                 />
             )}
-            <div className='flex'>
+            
                 <div className='container mx-auto my-4 
                     grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                     {postagens
@@ -64,7 +64,6 @@ function ListaPostagensById() {
                             <CardPostagens key={filteredPostagem.id} post={filteredPostagem} />
                         ))}
                 </div>
-            </div>
             <ModalPostagem />
         </>
     );

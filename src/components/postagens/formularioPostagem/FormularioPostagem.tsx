@@ -183,7 +183,6 @@ return (
                     type="text"
                     placeholder="Adicione aqui o link da Postagem"
                     name="link"
-                    required
                     className="border-2 border-slate-700 rounded p-2"
                 />
             </div>

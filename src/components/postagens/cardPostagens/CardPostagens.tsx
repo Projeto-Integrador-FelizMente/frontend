@@ -1,11 +1,30 @@
 import { Link } from 'react-router-dom'
 import Postagem from '../../../models/Postagem'
+import { ReactNode, useState} from 'react'
 
 interface CardPostagensProps {
     post: Postagem
 }
 
 function CardPostagens({ post }: CardPostagensProps) {
+
+    const [isTextExpanded, setIsTextExpanded] = useState(false);
+
+    let component;
+
+    if (isTextExpanded || post.texto.length <= 20) {
+        component = <p id='textoPost'>{post.texto}</p>;
+    } else {
+        component = (
+            <p
+                id='textoPost'
+                className='h-10 overflow-hidden'
+            >
+                {post.texto}
+            </p>
+        );
+    }
+
     return (
         <div className='border-slate-900 border 
             flex flex-col rounded overflow-hidden justify-between'>
@@ -16,11 +35,19 @@ function CardPostagens({ post }: CardPostagensProps) {
                 <div className='p-4'>
                     <h4 className='text-lg font-semibold uppercase'>{post.titulo}</h4>
                     <p className='text-amber-600 font-bold'>Status: {post.estado}</p>
-                    <p>{post.texto}</p>
-                    <p>Tema: {post.tema?.nome}</p>
-                    <p>Usuario: {post.user?.nome}</p>
+                    <p className='text-blue-900 font-bold'>Tema: {post.tema?.nome}</p>
+                    <hr className='w-full'/>               
+                    {component}
+                    {post.texto.length > 20 && (
+                    <button
+                        onClick={() => setIsTextExpanded(!isTextExpanded)}
+                        className='text-blue-500 hover:underline focus:outline-none'
+                    >
+                        {isTextExpanded ? 'Mostrar menos' : 'Mostrar mais'}
+                    </button>
+                )}
                     <p>{post.link}</p>
-                    <p>Data: {new Intl.DateTimeFormat(undefined, {
+                    <p className='text-end text-xs'>Data: {new Intl.DateTimeFormat(undefined, {
                         dateStyle: 'full',
                         timeStyle: 'medium',
                     }).format(new Date(post.data))}</p>
