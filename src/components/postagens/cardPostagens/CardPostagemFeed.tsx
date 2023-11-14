@@ -7,7 +7,7 @@ interface CardPostagensProps {
 function CardPostagensFeed({ post }: CardPostagensProps) {
     return (
         <div className='border-slate-900 border 
-            flex flex-col rounded overflow-hidden justify-between'>
+            flex flex-col rounded overflow-hidden justify-between w-[75%] mx-auto'>
 
             <div>
                 <div className="py-2 px-6 bg-gradient-to-r from-yellow-300 to-pink-400 font-bold text-2xl">  
