@@ -1,18 +1,17 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react'
-import { RotatingLines } from 'react-loader-spinner'
-import { useNavigate } from 'react-router-dom'
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { RotatingLines } from 'react-loader-spinner';
+import { useNavigate } from 'react-router-dom';
+import { cadastrarUsuario } from '../../services/Service';
+import Usuario from '../../models/User';
 
-import { cadastrarUsuario } from '../../services/Service'
-import Usuario from '../../models/User'
-
-import './Cadastro.css'
+import './Cadastro.css';
 
 function Cadastro() {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [confirmaSenha, setConfirmaSenha] = useState<string>("")
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [confirmaSenha, setConfirmaSenha] = useState<string>("");
+  const [tipoSelecionado, setTipoSelecionado] = useState<string>('');
 
   const [usuario, setUsuario] = useState<Usuario>({
     id: 0,
@@ -21,50 +20,58 @@ function Cadastro() {
     foto: '',
     senha: '',
     tipo: ''
-  })
+  });
 
   useEffect(() => {
     if (usuario.id !== 0) {
-      retornar()
+      retornar();
     }
-  }, [usuario])
+  }, [usuario]);
 
   function retornar() {
-    navigate('/login')
+    navigate('/login');
   }
 
   function handleConfirmarSenha(e: ChangeEvent<HTMLInputElement>) {
-    setConfirmaSenha(e.target.value)
+    setConfirmaSenha(e.target.value);
   }
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     setUsuario({
       ...usuario,
       [e.target.name]: e.target.value
-    })
+    });
   }
 
+  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = event.target.value;
+    setTipoSelecionado(selectedValue);
+    setUsuario((prevUsuario) => ({
+      ...prevUsuario,
+      tipo: selectedValue
+    }));
+  };
+
   async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+    e.preventDefault();
 
     if (confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
-      setIsLoading(true)
+      setIsLoading(true);
 
       try {
-        await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario)
-        alert('Usuário cadastrado com sucesso')
-
+        await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
+        alert('Usuário cadastrado com sucesso');
       } catch (error) {
-        alert('Erro ao cadastrar o Usuário')
+        alert('Erro ao cadastrar o Usuário');
       }
 
     } else {
-      alert('Dados inconsistentes. Verifique as informações de cadastro.')
-      setUsuario({ ...usuario, senha: "" })
-      setConfirmaSenha("")
+      alert('Dados inconsistentes. Verifique as informações de cadastro.');
+      setUsuario({ ...usuario, senha: "" });
+      setConfirmaSenha("");
     }
 
-    setIsLoading(false)
+    setIsLoading(false);
   }
 
   return (
@@ -72,7 +79,8 @@ function Cadastro() {
       <div className="fundoCadastro hidden lg:block"></div>
       <form
         className='flex justify-center items-center flex-col w-2/3 gap-3'
-        onSubmit={cadastrarNovoUsuario}>
+        onSubmit={cadastrarNovoUsuario}
+      >
         <h2 className='text-slate-900 text-5xl'>Cadastrar</h2>
         <div className="flex flex-col w-full">
           <label htmlFor="nome">Nome</label>
@@ -110,20 +118,26 @@ function Cadastro() {
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
-
+       
         <div className="flex flex-col w-full">
-          <label htmlFor="tipo">Tipo de usuário</label>
-          <input
-            type="text"
-            id="tipo"
-            name="tipo"
-            placeholder="Tipo"
-            className="border-2 border-slate-700 rounded p-2"
-            value={usuario.tipo}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-          />
-        </div>
+          
 
+          <div className="flex flex-col gap-2">
+            <p>Tipo</p>
+            <select
+              name="tipo"
+              id="tipo"
+              className='border p-2 border-slate-800 rounded'
+              onChange={handleSelectChange}
+              value={tipoSelecionado}
+            >
+              <option value="" disabled>Selecione um Tipo</option>
+              <option value="Profissional">Profissional</option>
+              <option value="Utilizador">Utilizador</option>
+            </select>
+          </div>
+        </div>
+      
         <div className="flex flex-col w-full">
           <label htmlFor="senha">Senha</label>
           <input
@@ -156,7 +170,7 @@ function Cadastro() {
           </button>
           <button
             className='rounded text-white bg-indigo-400 hover:bg-indigo-900 w-1/2 
-                                           py-2 flex justify-center'
+                           py-2 flex justify-center'
             type='submit'>
             {isLoading ? <RotatingLines
               strokeColor="white"
@@ -164,13 +178,14 @@ function Cadastro() {
               animationDuration="0.75"
               width="24"
               visible={true}
-            /> : 
-            <span>Cadastrar</span>
-             }
+            /> :
+              <span>Cadastrar</span>
+            }
           </button>
         </div>
       </form>
     </div>
-  )
+  );
 }
-export default Cadastro
+
+export default Cadastro;
