@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState} from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Dna } from 'react-loader-spinner';
 
@@ -58,19 +58,11 @@ function ListaPostagens() {
                     wrapperClass="dna-wrapper mx-auto"
                 />
             )}
-            <div className='flex'>
-                <div className='container mx-auto my-4 
-        grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4'>
-
-                    {postagens.map((postagem) => (
-                        <CardPostagensFeed key={postagem.id} post={postagem} />
-                    ))}
-
-                </div>
-                
+            <div className='justify-center items-center container mx-4 my-4 grid grid-cols-1 gap-4 '>
+                {postagens.map((postagem) => (
+                    <CardPostagensFeed key={postagem.id} post={postagem} />
+                ))}
             </div>
-            
-            
         </>
     )
 }
