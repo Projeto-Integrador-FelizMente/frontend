@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
+import { ToastContainer } from 'react-toastify';
 
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
@@ -15,10 +16,13 @@ import DeletarTema from "./components/temas/deletarTema/DeletarTema";
 import Perfil from './pages/perfil/Perfil';
 import Contato from "./pages/contato/Contato";
 
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <>
       <AuthProvider>
+        <ToastContainer />
         <BrowserRouter>
           <Navbar />
           <div className="min-h-[80vh]">
