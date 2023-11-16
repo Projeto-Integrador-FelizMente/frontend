@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 import { AuthContext } from '../../contexts/AuthContext'
 import ListaPostagensById from '../../components/postagens/listaPostagens/ListaPostagensById'
@@ -18,24 +18,34 @@ function Perfil() {
         }
     }, [usuario.token])
 
+
     return (
         <>
             <div className='flex'>
 
-                <div className='container rounded-2xl overflow-hidden w-1/4 h-screen bg-sky-500 '>
+                <div className='container w-1/4 h-[100] min-h-screen bg-purple-400  col-span-3'>
 
                     <img
-                        className='rounded-full w-56 h-56 mx-auto text-center  border-slate-900 border justify-center'
+                        className='rounded-full w-56 h-56 mx-auto text-center mt-4 border-slate-900 border justify-center'
                         src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`} />
 
                     <div
-                        className="  flex flex-col
-                     text-white text-2xl items-center justify-center"
+                        className=" ml-2 mt-2 flex flex-col
+                     text-white text-xl justify-center"
                     >
-                        <p>Nome: {usuario.nome} </p>
-                        <p>Email: {usuario.usuario}</p>
-                        <p>Tipo: {usuario.tipo}</p>
+                        <p className=' font-bold'>Nome:</p>
+                        <p>{usuario.nome}</p>
+                        <p className='font-bold'>Email:</p>
+                        <p> {usuario.usuario}</p>
+                        <p className=' font-bold'>Tipo: </p>
+                        <p>{usuario.tipo}</p>
                     </div>
+
+                    <hr className='mb-5'/>
+                    <Link to={`/atualizarUsuario/${usuario.id}`}  >
+                        <button className='bg-purple-800 hover:bg-purple-500 border-double border-white border-4 p justify-center w-full  h-10 text-white text-[18px]'>EDITAR</button>
+                    </Link>
+
 
                 </div>
                 <div className='mx-auto text-center ml-2'>

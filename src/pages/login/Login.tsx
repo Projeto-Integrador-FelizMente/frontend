@@ -87,7 +87,7 @@ function Login() {
             </Link>
           </p>
         </form>
-        <div className="hidden lg:block"><img src="https://i.imgur.com/cGdR71c.png" alt="imagem de fundo meditação"></img></div>
+        <div className="hidden lg:block"><img src="https://i.imgur.com/9t2S9gc.png" alt="imagem de fundo meditação"></img></div>
              
       </div>
     </>
