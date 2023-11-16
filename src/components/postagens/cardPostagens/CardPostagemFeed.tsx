@@ -1,22 +1,35 @@
+import { ChangeEvent, FormEvent, useState } from 'react'
 import Postagem from '../../../models/Postagem'
+import Comentarios from './Comentario'
 
 interface CardPostagensProps {
     post: Postagem
 }
 
 function CardPostagensFeed({ post }: CardPostagensProps) {
+    const [comentarios, setComentarios] = useState([''])
+    const [novoComentarioTexto, setNovoComentarioTexto] = useState('')
+
+    function criarNovoComentario(event: FormEvent) {
+        event.preventDefault()
+        setComentarios([...comentarios, novoComentarioTexto])
+        setNovoComentarioTexto('')
+    }
+    function atualizarNovoComentario(event: ChangeEvent<HTMLTextAreaElement>) {
+        setNovoComentarioTexto(event.target.value)
+    }
     return (
         <div className='border-slate-900 border 
             flex flex-col rounded overflow-hidden justify-between w-[75%] mx-auto'>
 
             <div>
-                <div className="py-2 px-6 bg-gradient-to-r from-yellow-300 to-pink-400 font-bold text-2xl">  
+                <div className="py-2 px-6 bg-gradient-to-r from-yellow-300 to-pink-400 font-bold text-2xl">
                 </div>
                 <div className='p-4'>
                     <h4 className='text-lg font-semibold uppercase text-center'>{post.titulo}</h4>
                     <p className='text-amber-600 font-bold ml-6'>Status: {post.estado}</p>
-                    <p className='ml-6'>Tema: {post.tema?.nome}</p>
-                    <hr className='w-full'/>
+                    <p className='text-blue-900 font-bold ml-6'>Tema: {post.tema?.nome}</p>
+                    <hr className='w-full' />
                     <p className='m-5'>{post.texto}</p>
                     <p>{post.link}</p>
                     <p>Data: {new Intl.DateTimeFormat(undefined, {
@@ -25,7 +38,31 @@ function CardPostagensFeed({ post }: CardPostagensProps) {
                     }).format(new Date(post.data))}</p>
                 </div>
             </div>
-            
+            <hr />
+            <form onSubmit={criarNovoComentario} className='flex flex-col p-4'>
+                <strong>Comentarios</strong>
+                <div className='flex '>
+                    <textarea
+                        className='w-full mt-4 mr-5'
+                        name='comment'
+                        placeholder='Deixe seu comentário'
+                        value={novoComentarioTexto}
+                        onChange={atualizarNovoComentario}
+                        required
+                    />
+                    <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold mt-2 py-2 px-4 rounded-full" type="submit">
+                        Publicar
+                    </button>
+                </div>
+            </form>
+            <hr />
+            <div className='border-slate-900'>
+                {comentarios.map(comentario => {
+                    return (
+                        <Comentarios conteudo={comentario} />
+                    )
+                })}
+            </div>
         </div>
     )
 }
