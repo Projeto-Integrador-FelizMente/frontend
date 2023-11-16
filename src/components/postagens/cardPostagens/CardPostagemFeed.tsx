@@ -20,10 +20,10 @@ function CardPostagensFeed({ post }: CardPostagensProps) {
     }
     return (
         <div className='flex justify-center'>
-            <div className='border-slate-900 border flex-col w-full'>
+            <div className='border-slate-900 border flex-col w-[75%] dark:bg-black dark:text-white'>
 
                 <div>
-                    <div className="py-2 px-6 bg-gradient-to-r from-yellow-300 to-pink-400 font-bold text-2xl">
+                    <div className="py-2 px-6 bg-gradient-to-r from-yellow-300 to-pink-400 font-bold text-2xl dark:bg-gradient-to-r dark:from-yellow-600 dark:to-pink-600">
                     </div>
                     <div className='p-4'>
                         <h4 className='text-lg font-semibold uppercase text-center'>{post.titulo}</h4>

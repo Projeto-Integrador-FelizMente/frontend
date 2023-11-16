@@ -45,8 +45,6 @@ function Perfil() {
                     <Link to={`/atualizarUsuario/${usuario.id}`}  >
                         <button className='bg-purple-800 hover:bg-purple-500 border-double border-white border-4 p justify-center w-full  h-10 text-white text-[18px]'>EDITAR</button>
                     </Link>
-
-
                 </div>
                 <div className='mx-auto text-center ml-2'>
                     <h1 className='text-xl font-bold underline'>Minhas Postagens</h1>

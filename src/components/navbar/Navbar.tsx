@@ -56,13 +56,13 @@ function Navbar() {
 
   return (
     <>
-      <div className=" bg-gradient-to-r from-yellow-300 to-pink-400 w-full justify-between  flex flex-wrap">
+      <div className=" bg-gradient-to-r from-yellow-300 to-pink-400 w-full justify-between  flex flex-wrap dark:bg-gradient-to-r dark:from-purple-900 dark:to-pink-800">
         <div className="flex items-center">
           <Link to='./home' className="hover:underline ">
             <img className="w-16 m-3" src="https://i.imgur.com/eO3G9kQ.png" alt="Logo Felizmente" />
           </Link>
           <Link to='/home'>
-            <label className="text-violet-950 text-3xl font-bold cursor-pointer hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-purple-400 to-pink-600">
+            <label className="text-violet-950 dark: text-violet-500 text-3xl font-bold cursor-pointer hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-400 hover:to-pink-600">
               FelizMente
             </label>
           </Link>
