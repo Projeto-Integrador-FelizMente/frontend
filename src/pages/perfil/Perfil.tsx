@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { AuthContext } from '../../contexts/AuthContext'
 import ListaPostagensById from '../../components/postagens/listaPostagens/ListaPostagensById'
+import { toastAlerta } from '../../utils/toastAlerta'
 
 function Perfil() {
 
@@ -12,7 +13,7 @@ function Perfil() {
 
     useEffect(() => {
         if (usuario.token === "") {
-            alert('Você precisa estar logado')
+            toastAlerta('Você precisa estar logado', 'info')
             navigate("/login")
         }
     }, [usuario.token])
@@ -20,7 +21,7 @@ function Perfil() {
     return (
         <>
             <div className='flex'>
-                
+
                 <div className='container rounded-2xl overflow-hidden w-1/4 h-screen bg-sky-500 '>
 
                     <img
@@ -39,7 +40,7 @@ function Perfil() {
                 </div>
                 <div className='mx-auto text-center ml-2'>
                     <h1 className='text-xl font-bold underline'>Minhas Postagens</h1>
-                    <ListaPostagensById/>
+                    <ListaPostagensById />
                 </div>
             </div>
         </>

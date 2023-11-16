@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { ReactNode, useContext } from 'react'
 import { AuthContext } from "../../contexts/AuthContext";
+import { toastAlerta } from "../../utils/toastAlerta";
 
 
 function Navbar() {
@@ -9,7 +10,7 @@ function Navbar() {
 
   function logout() {
     handleLogout();
-    alert("Usuário deslogado com sucesso");
+    toastAlerta("Usuário deslogado com sucesso", 'sucesso');
     navigate("/login");
   }
 
@@ -39,7 +40,7 @@ function Navbar() {
 
   } else {
     if (url_atual !== "/login" && url_atual !== "/cadastro")
-    component = (
+      component = (
         <div className="flex gap-4 text-xl p-8 ">
 
           <Link to='/login' className="hover:underline hover:text-lime-500">
@@ -65,7 +66,7 @@ function Navbar() {
             <Link to='/home'>
               <label className="text-violet-950 text-3xl font-bold cursor-pointer hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-purple-400 to-pink-600">
                 FelizMente
-                </label>
+              </label>
             </Link>
           </div>
           <div className='items-center flex font-serif '>

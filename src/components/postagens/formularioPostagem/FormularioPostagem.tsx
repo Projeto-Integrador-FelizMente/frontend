@@ -7,6 +7,7 @@ import { AuthContext } from '../../../contexts/AuthContext';
 
 import Tema from '../../../models/Tema';
 import Postagem from '../../../models/Postagem';
+import { toastAlerta } from '../../../utils/toastAlerta';
 
 function FormularioPostagem() {
     const navigate = useNavigate();
@@ -47,7 +48,7 @@ function FormularioPostagem() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado');
+            toastAlerta('Você precisa estar logado', 'info');
             navigate('/');
         }
     }, [token, navigate]);
@@ -92,13 +93,13 @@ function FormularioPostagem() {
                     },
                 });
 
-                alert('Postagem atualizada com sucesso');
+                toastAlerta('Postagem atualizada com sucesso', 'sucesso');
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    alert('O token expirou, favor logar novamente');
+                    toastAlerta('O token expirou, favor logar novamente', 'info');
                     handleLogout();
                 } else {
-                    alert('Erro ao atualizar a Postagem');
+                    toastAlerta('Erro ao atualizar a Postagem', 'erro');
                 }
             }
         } else {
@@ -109,13 +110,13 @@ function FormularioPostagem() {
                     },
                 });
 
-                alert('Postagem cadastrada com sucesso');
+                toastAlerta('Postagem cadastrada com sucesso', 'sucesso');
             } catch (error: any) {
                 if (error.toString().includes('403')) {
-                    alert('O token expirou, favor logar novamente');
+                    toastAlerta('O token expirou, favor logar novamente', 'info');
                     handleLogout();
                 } else {
-                    alert('Erro ao cadastrar a Postagem');
+                    toastAlerta('Erro ao cadastrar a Postagem', 'erro');
                 }
             }
         }
@@ -140,109 +141,109 @@ function FormularioPostagem() {
 
     const carregandoTema = tema.descricao === '';
 
-return (
-    <div className="container flex flex-col mx-auto items-center">
-        <h1 className="text-4xl text-center my-8">
-            {id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}
-        </h1>
+    return (
+        <div className="container flex flex-col mx-auto items-center">
+            <h1 className="text-4xl text-center my-8">
+                {id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}
+            </h1>
 
-        <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovaPostagem}>
-            <div className="flex flex-col gap-2">
-                <label htmlFor="titulo">Título da Postagem</label>
-                <input
-                    value={postagem.titulo}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                    type="text"
-                    placeholder="Insira aqui o Título"
-                    name="titulo"
-                    required
-                    className="border-2 border-slate-700 rounded p-2"
-                />
-            </div>
+            <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovaPostagem}>
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="titulo">Título da Postagem</label>
+                    <input
+                        value={postagem.titulo}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Insira aqui o Título"
+                        name="titulo"
+                        required
+                        className="border-2 border-slate-700 rounded p-2"
+                    />
+                </div>
 
-            <div className="flex flex-col gap-2">
-                <label htmlFor="texto">Texto da Postagem</label>
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="texto">Texto da Postagem</label>
 
-                <input
-                    value={postagem.texto}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                    type="text"
-                    placeholder="Adicione aqui o Texto da Postagem"
-                    name="texto"
-                    required
-                    className="border-2 border-slate-700 rounded p-2"
-                />
-            </div>
+                    <input
+                        value={postagem.texto}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Adicione aqui o Texto da Postagem"
+                        name="texto"
+                        required
+                        className="border-2 border-slate-700 rounded p-2"
+                    />
+                </div>
 
-            <div className="flex flex-col gap-2">
-                <label htmlFor="link">link da Postagem</label>
+                <div className="flex flex-col gap-2">
+                    <label htmlFor="link">link da Postagem</label>
 
-                <input
-                    value={postagem.link}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                    type="text"
-                    placeholder="Adicione aqui o link da Postagem"
-                    name="link"
-                    className="border-2 border-slate-700 rounded p-2"
-                />
-            </div>
+                    <input
+                        value={postagem.link}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        type="text"
+                        placeholder="Adicione aqui o link da Postagem"
+                        name="link"
+                        className="border-2 border-slate-700 rounded p-2"
+                    />
+                </div>
 
-            <div className="flex flex-col gap-2">
-                <p>Estado da Postagem</p>
-                <select
-                    name="estado"
-                    id="estado"
-                    className='border p-2 border-slate-800 rounded'
-                    onChange={handleSelectChange}
-                    value={estadoSelecionado}
-                >
-                    <option value="" disabled>Selecione um Estado</option>
-                    <option value="Ativo">Ativo</option>
-                    {id !== undefined && (
-                        <option value="Inativo" disabled={id === undefined}>
-                            Inativo
-                        </option>
-                    )}
-                </select>
+                <div className="flex flex-col gap-2">
+                    <p>Estado da Postagem</p>
+                    <select
+                        name="estado"
+                        id="estado"
+                        className='border p-2 border-slate-800 rounded'
+                        onChange={handleSelectChange}
+                        value={estadoSelecionado}
+                    >
+                        <option value="" disabled>Selecione um Estado</option>
+                        <option value="Ativo">Ativo</option>
+                        {id !== undefined && (
+                            <option value="Inativo" disabled={id === undefined}>
+                                Inativo
+                            </option>
+                        )}
+                    </select>
 
-            </div>
+                </div>
 
-            <div className="flex flex-col gap-2">
-                <p>Tema da Postagem</p>
-                <select name="tema" id="tema" className='border p-2 border-slate-800 rounded'
-                    onChange={(e) => buscarTemaPorId(e.currentTarget.value)}
-                >
-                    <option value="" selected disabled>Selecione um Tema</option>
-                    {temas.map((tema) => (
-                        <>
-                            <option value={tema.id} >{tema.nome}</option>
-                        </>
-                    ))}
-                </select>
-            </div>
+                <div className="flex flex-col gap-2">
+                    <p>Tema da Postagem</p>
+                    <select name="tema" id="tema" className='border p-2 border-slate-800 rounded'
+                        onChange={(e) => buscarTemaPorId(e.currentTarget.value)}
+                    >
+                        <option value="" selected disabled>Selecione um Tema</option>
+                        {temas.map((tema) => (
+                            <>
+                                <option value={tema.id} >{tema.nome}</option>
+                            </>
+                        ))}
+                    </select>
+                </div>
 
-            <button
+                <button
 
-                type='submit'
-                disabled={carregandoTema}
-                className='flex justify-center rounded disabled:bg-slate-200 bg-indigo-400 
+                    type='submit'
+                    disabled={carregandoTema}
+                    className='flex justify-center rounded disabled:bg-slate-200 bg-indigo-400 
                             hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto py-2'
-            >
+                >
 
-                {isLoading ?
-                    <RotatingLines
-                        strokeColor="white"
-                        strokeWidth="5"
-                        animationDuration="0.75"
-                        width="24"
-                        visible={true}
-                    /> :
-                    <span>Confirmar</span>
-                }
-            </button>
-        </form>
-    </div>
-)
+                    {isLoading ?
+                        <RotatingLines
+                            strokeColor="white"
+                            strokeWidth="5"
+                            animationDuration="0.75"
+                            width="24"
+                            visible={true}
+                        /> :
+                        <span>Confirmar</span>
+                    }
+                </button>
+            </form>
+        </div>
+    )
 }
 
 export default FormularioPostagem;
