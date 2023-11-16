@@ -27,8 +27,8 @@ function Footer() {
   }
 
   return (
-    <div className="flex justify-center bg-gradient-to-r from-yellow-300 to-pink-400">
-      <div className="container flex flex-col items-center py-4 text-violet-950">
+    <div className="flex justify-center bg-gradient-to-r from-yellow-300 to-pink-400 dark:bg-gradient-to-r dark:from-purple-900 dark:to-pink-800">
+      <div className="container flex flex-col items-center py-4 text-violet-950 dark:text-violet-600">
         <p className='text-xl font-bold'>
           FelizMente | Copyright ©️ {data}
         </p>
