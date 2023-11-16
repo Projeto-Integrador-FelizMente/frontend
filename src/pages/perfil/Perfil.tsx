@@ -18,7 +18,7 @@ function Perfil() {
         }
     }, [usuario.token])
 
-
+    console.log(usuario)
     return (
         <>
             <div className='flex'>

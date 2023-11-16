@@ -20,7 +20,7 @@ function Navbar() {
   if (usuario.token !== "") {
 
     component = (
-      <div className="flex gap-4 text-xl ">
+      <div className="flex gap-4 text-xl mr-4">
         <Link to='/postagens' className="hover:underline">
           Postagens
         </Link>
@@ -41,7 +41,7 @@ function Navbar() {
   } else {
     if (url_atual !== "/login" && url_atual !== "/cadastro")
       component = (
-        <div className="flex gap-4 text-xl p-8 ">
+        <div className="flex gap-4 text-xl p-8 mr-4">
 
           <Link to='/login' className="hover:underline hover:text-lime-500">
             Logar
@@ -56,22 +56,19 @@ function Navbar() {
 
   return (
     <>
-      <div className="w-full bg-gradient-to-r from-yellow-300 to-pink-400">
-
-        <div className="container flex flex-wrap justify-between">
-          <div className="flex items-center">
-            <Link to='./home' className="hover:underline ">
-              <img className="w-16 m-3" src="https://i.imgur.com/eO3G9kQ.png" alt="Logo Felizmente" />
-            </Link>
-            <Link to='/home'>
-              <label className="text-violet-950 text-3xl font-bold cursor-pointer hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-purple-400 to-pink-600">
-                FelizMente
-              </label>
-            </Link>
-          </div>
-          <div className='items-center flex font-serif '>
-            {component}
-          </div>
+      <div className=" bg-gradient-to-r from-yellow-300 to-pink-400 w-full justify-between  flex flex-wrap">
+        <div className="flex items-center">
+          <Link to='./home' className="hover:underline ">
+            <img className="w-16 m-3" src="https://i.imgur.com/eO3G9kQ.png" alt="Logo Felizmente" />
+          </Link>
+          <Link to='/home'>
+            <label className="text-violet-950 text-3xl font-bold cursor-pointer hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-purple-400 to-pink-600">
+              FelizMente
+            </label>
+          </Link>
+        </div>
+        <div className='items-center flex font-serif '>
+          {component}
         </div>
       </div>
     </>
