@@ -1,5 +1,5 @@
 interface ComentariosProps {
-    conteudo: string
+    conteudo: string;
 }
 
 function Comentarios({ conteudo }: ComentariosProps) {
