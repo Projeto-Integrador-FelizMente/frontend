@@ -142,7 +142,7 @@ function FormularioPostagem() {
     const carregandoTema = tema.descricao === '';
 
     return (
-        <div className="container flex flex-col mx-auto items-center">
+        <div className="container flex flex-col mx-auto items-center dark:bg-black ">
             <h1 className="text-4xl text-center my-8">
                 {id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}
             </h1>
@@ -184,7 +184,7 @@ function FormularioPostagem() {
                         type="text"
                         placeholder="Adicione aqui o link da Postagem"
                         name="link"
-                        className="border-2 border-slate-700 rounded p-2"
+                        className="border-2 border-slate-700 dark:border-slate-400 rounded p-2"
                     />
                 </div>
 

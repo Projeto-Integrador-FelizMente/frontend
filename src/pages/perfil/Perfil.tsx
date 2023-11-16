@@ -23,7 +23,7 @@ function Perfil() {
         <>
             <div className='flex'>
 
-                <div className='container w-1/4 h-[100] min-h-screen bg-purple-400  col-span-3'>
+                <div className='container w-1/4 h-[100] min-h-screen bg-purple-400 dark:bg-purple-800  col-span-3'>
 
                     <img
                         className='rounded-full w-56 h-56 mx-auto text-center mt-4 border-slate-900 border justify-center'
