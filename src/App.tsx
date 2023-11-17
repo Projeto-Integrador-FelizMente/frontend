@@ -7,13 +7,13 @@ import Login from "./pages/login/Login";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
-import ListaPostagens from './components/postagens/listaPostagens/ListaPostagens';
-import FormularioPostagem from './components/postagens/formularioPostagem/FormularioPostagem';
-import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
+import ListaPostagens from "./components/postagens/listaPostagens/ListaPostagens";
+import FormularioPostagem from "./components/postagens/formularioPostagem/FormularioPostagem";
+import DeletarPostagem from "./components/postagens/deletarPostagem/DeletarPostagem";
 import ListaTemas from "./components/temas/listaTemas/ListaTemas";
 import FormularioTema from "./components/temas/formularioTema/FormularioTema";
 import DeletarTema from "./components/temas/deletarTema/DeletarTema";
-import Perfil from './pages/perfil/Perfil';
+import Perfil from "./pages/perfil/Perfil";
 import Contato from "./pages/contato/Contato";
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,9 +33,18 @@ function App() {
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/atualizarUsuario/:id" element={<Cadastro/>}/>
               <Route path="/postagens" element={<ListaPostagens />} />
-              <Route path="/cadastroPostagem" element={<FormularioPostagem />} />
-              <Route path="/editarPostagem/:id" element={<FormularioPostagem />} />
-              <Route path="/deletarPostagem/:id" element={<DeletarPostagem />} />
+              <Route
+                path="/cadastroPostagem"
+                element={<FormularioPostagem />}
+              />
+              <Route
+                path="/editarPostagem/:id"
+                element={<FormularioPostagem />}
+              />
+              <Route
+                path="/deletarPostagem/:id"
+                element={<DeletarPostagem />}
+              />
               <Route path="/tema" element={<ListaTemas />} />
               <Route path="/cadastrarTema" element={<FormularioTema />} />
               <Route path="/editarTema/:id" element={<FormularioTema />} />

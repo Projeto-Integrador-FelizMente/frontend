@@ -34,7 +34,6 @@ function Home() {
           </p>
       </div>
       <div className="fundoHome hidden lg:block "></div>
-
     </div >
     </>
   )

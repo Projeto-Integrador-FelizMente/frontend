@@ -225,8 +225,8 @@ function FormularioPostagem() {
 
                     type='submit'
                     disabled={carregandoTema}
-                    className='flex justify-center rounded disabled:bg-slate-200 bg-indigo-400 
-                    hover:bg-indigo-800 dark:hover:bg-indigo-950 text-white dark:disabled:bg-slate-600 dark:bg-indigo-800  font-bold w-1/2 mx-auto py-2'
+                    className='flex justify-center rounded disabled:bg-slate-200  dark:bg-indigo-900 bg-indigo-400 
+                            hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto py-2'
                 >
 
                     {isLoading ?
