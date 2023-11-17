@@ -1,7 +1,11 @@
+
 .popup-content {
     border-radius: 1rem;
     padding-bottom: 2rem;
 }
-.dark-mode .popup-content{
+
+.dark .popup-content {
+    
     background-color: black;
+    color: white;
 }
