@@ -119,7 +119,7 @@ useEffect(() => {
         className='flex justify-center items-center flex-col w-2/3 gap-3'
         onSubmit={cadastrarNovoUsuario}
       >
-        <h2 className='text-slate-900 text-5xl'>
+        <h2 className='dark:text-slate-300 text-slate-900 text-5xl'>
           {id !== undefined ? 'Editar Usuario' : 'Cadastrar'}
         </h2>
         <div className="flex flex-col w-full">
@@ -129,7 +129,7 @@ useEffect(() => {
             id="nome"
             name="nome"
             placeholder="Nome"
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
             value={user.nome}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
@@ -141,7 +141,7 @@ useEffect(() => {
             id="usuario"
             name="usuario"
             placeholder="Usuario"
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
             value={user.usuario}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
@@ -153,7 +153,7 @@ useEffect(() => {
             id="foto"
             name="foto"
             placeholder="Foto"
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
             value={user.foto}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
@@ -167,7 +167,7 @@ useEffect(() => {
             <select
               name="tipo"
               id="tipo"
-              className='border p-2 border-slate-800 rounded'
+              className='border p-2 dark:bg-black dark:border-slate-300 border-slate-800 rounded'
               onChange={handleSelectChange}
               value={tipoSelecionado}
             >
@@ -185,7 +185,7 @@ useEffect(() => {
             id="senha"
             name="senha"
             placeholder="Senha"
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
             value={user.senha}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
@@ -197,7 +197,7 @@ useEffect(() => {
             id="confirmarSenha"
             name="confirmarSenha"
             placeholder="Confirmar Senha"
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
             value={confirmaSenha}
             onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)}
           />
@@ -218,7 +218,7 @@ useEffect(() => {
               width="24"
               visible={true}
             /> :
-              <span>Cadastrar</span>
+              <span>{id !== undefined ? 'Atualizar' : 'Cadastrar'}</span>
             }
           </button>
         </div>

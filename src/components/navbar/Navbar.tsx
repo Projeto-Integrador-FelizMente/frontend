@@ -45,7 +45,7 @@ function Navbar() {
         <Link to="" onClick={logout} className="hover:underline">
           Sair
         </Link>
-        <div className="pb-1 rounded-full cursor-pointer " onClick={() => setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))}>
+        <div className="cursor-pointer hover:border" onClick={() => setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))}>
           {theme === 'light' ? (
             <img width="35px" src={moonImg} alt="Botão para trocar o tema entre claro e escuro." />
           ) : (
