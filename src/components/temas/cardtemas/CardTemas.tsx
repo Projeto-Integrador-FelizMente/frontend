@@ -23,8 +23,7 @@ function CardTemas({ tema }: CardTemasProps) {
         </Link>
         <Link
           to={`/editarTema/${tema.id}`}
-          className="w-full text-slate-100 bg-green-400 hover:bg-green-800 
-                        flex items-center justify-center py-2 dark:bg-green-700 dark:hover:bg-green-950"
+          className="w-full text-slate-100 bg-green-400 hover:bg-green-800 flex items-center justify-center py-2 dark:bg-green-700 dark:hover:bg-green-950"
         >
           <button>Editar</button>
         </Link>
