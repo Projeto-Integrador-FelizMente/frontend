@@ -37,8 +37,8 @@ function Perfil() {
                         <p>{usuario.nome}</p>
                         <p className='font-bold'>Email:</p>
                         <p> {usuario.usuario}</p>
-                        <p className=' font-bold'>Tipo: </p>
-                        <p>{usuario.tipo}</p>
+                        {/* <p className=' font-bold'>Tipo: </p>
+                        <p>{usuario.tipo}</p> */}
                     </div>
 
                     <hr className='mb-5'/>

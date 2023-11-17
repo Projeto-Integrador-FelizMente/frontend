@@ -115,7 +115,7 @@ function FormularioTema() {
             type="text"
             placeholder="Escreva o nome do Tema"
             name="Nome"
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2 border-slate-700 dark:border-slate-200 dark:bg-black rounded p-2"
             value={tema.nome}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
@@ -124,7 +124,7 @@ function FormularioTema() {
             type="text"
             placeholder="Descreva aqui seu tema"
             name="descricao"
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2 border-slate-700 rounded dark:border-slate-200 dark:bg-black p-2"
             value={tema.descricao}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
