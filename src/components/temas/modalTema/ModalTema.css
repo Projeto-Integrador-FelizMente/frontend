@@ -3,3 +3,8 @@
     padding-bottom: 2rem;
     
 }
+.dark .popup-content {
+    
+    background-color: black;
+    color: white;
+}
