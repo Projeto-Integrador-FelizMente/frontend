@@ -8,6 +8,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import Postagem from "../../../models/Postagem";
 import CardPostagens from "../cardPostagens/CardPostagens";
 import ModalPostagem from "../modalPostagem/ModalPostagem";
+import { toastAlerta } from "../../../utils/toastAlerta";
 
 function ListaPostagensById() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function ListaPostagensById() {
       });
     } catch (error: any) {
       if (error.toString().includes("403")) {
-        alert("O token expirou, favor logar novamente");
+        toastAlerta("O token expirou, favor logar novamente", 'info');
         handleLogout();
       }
     }
@@ -34,7 +35,7 @@ function ListaPostagensById() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado");
+      toastAlerta("Você precisa estar logado", 'info');
       navigate("/");
     }
   }, [token, navigate]);

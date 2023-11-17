@@ -5,9 +5,9 @@ function Home() {
 
   return (
     <>
-      <div className="bg-amber-100 flex justify-center">
+      <div className="bg-amber-100 flex justify-center dark:bg-rose-800 dark:text-white">
         <div className='flex grid-cols-2 text-black items-center justify-between '>
-          <h2 className='text-5xl font-bold text-center'>
+          <h2 className='dark:text-white text-5xl font-bold text-center'>
             Caminhando juntos rumo à FelizMente!
           </h2>
           <img
@@ -34,7 +34,6 @@ function Home() {
           </p>
       </div>
       <div className="fundoHome hidden lg:block "></div>
-
     </div >
     </>
   )

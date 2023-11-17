@@ -6,6 +6,7 @@ import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { AuthContext } from "../../../contexts/AuthContext";
 
 import Tema from "../../../models/Tema";
+import { toastAlerta } from "../../../utils/toastAlerta";
 
 function FormularioTema() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ function FormularioTema() {
       });
     } catch (error: any) {
       if (error.toString().includes("403")) {
-        alert("O token expirou, favor logar novamente");
+        toastAlerta("O token expirou, favor logar novamente", 'info');
         handleLogout();
       }
     }
@@ -35,7 +36,7 @@ function FormularioTema() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado");
+      toastAlerta("Você precisa estar logado", 'info');
       navigate("/login");
     }
   }, [token]);
@@ -68,10 +69,10 @@ function FormularioTema() {
         alert("Tema atualizado com sucesso");
       } catch (error: any) {
         if (error.toString().includes("403")) {
-          alert("O token expirou, favor logar novamente");
+          toastAlerta("O token expirou, favor logar novamente", 'info');
           handleLogout();
         } else {
-          alert("Erro ao atualizar o Tema");
+          toastAlerta("Erro ao atualizar o Tema", 'erro');
         }
       }
     } else {
@@ -82,13 +83,13 @@ function FormularioTema() {
           },
         });
 
-        alert("Tema cadastrado com sucesso");
+        toastAlerta("Tema cadastrado com sucesso", 'sucesso');
       } catch (error: any) {
         if (error.toString().includes("403")) {
-          alert("O token expirou, favor logar novamente");
+          toastAlerta("O token expirou, favor logar novamente", 'info');
           handleLogout();
         } else {
-          alert("Erro ao cadastrar o Tema");
+          toastAlerta("Erro ao cadastrar o Tema", 'erro');
         }
       }
     }
@@ -102,19 +103,19 @@ function FormularioTema() {
   }
 
   return (
-    <div className="container flex flex-col items-center justify-center mx-auto">
+    <div className=" dark:bg-black dark:border-slate-300 container flex flex-col items-center justify-center mx-auto">
       <h1 className="text-4xl text-center my-8">
         {id === undefined ? "Cadastrar Tema" : "Editar Tema"}
       </h1>
 
       <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
         <div className="flex flex-col gap-2">
-        <label htmlFor="Nome">Nome do Tema</label>
+          <label htmlFor="Nome">Nome do Tema</label>
           <input
             type="text"
             placeholder="Escreva o nome do Tema"
             name="Nome"
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2  dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
             value={tema.nome}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />

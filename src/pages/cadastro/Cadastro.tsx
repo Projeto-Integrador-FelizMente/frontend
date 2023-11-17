@@ -1,19 +1,26 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
-import { useNavigate } from 'react-router-dom';
-import { cadastrarUsuario } from '../../services/Service';
+import { useNavigate, useParams } from 'react-router-dom';
+import { cadastrarUsuario, atualizarUsuario, buscar } from '../../services/Service';
 import Usuario from '../../models/User';
+import { AuthContext } from '../../contexts/AuthContext';
 
 import './Cadastro.css';
+import { toastAlerta } from '../../utils/toastAlerta';
 
 function Cadastro() {
   const navigate = useNavigate();
+
+  const { id } = useParams<{ id: string }>();
+
+  const { usuario, handleLogout } = React.useContext(AuthContext);
+  const token = usuario.token;
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [confirmaSenha, setConfirmaSenha] = useState<string>("");
   const [tipoSelecionado, setTipoSelecionado] = useState<string>('');
 
-  const [usuario, setUsuario] = useState<Usuario>({
+  const [user, setUsuario] = useState<Usuario>({
     id: 0,
     nome: '',
     usuario: '',
@@ -22,14 +29,14 @@ function Cadastro() {
     tipo: ''
   });
 
-  useEffect(() => {
-    if (usuario.id !== 0) {
-      retornar();
-    }
-  }, [usuario]);
+ 
 
-  function retornar() {
+  function retornarCadastro() {
     navigate('/login');
+  }
+
+  function retornarPerfil() {
+    navigate('/perfil');
   }
 
   function handleConfirmarSenha(e: ChangeEvent<HTMLInputElement>) {
@@ -38,7 +45,7 @@ function Cadastro() {
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     setUsuario({
-      ...usuario,
+      ...user,
       [e.target.name]: e.target.value
     });
   }
@@ -52,25 +59,56 @@ function Cadastro() {
     }));
   };
 
+  async function buscarUsuarioPorId(usuarioId: string) {
+    await buscar(`/usuarios/${usuarioId}`, setUsuario, {
+        headers: {
+            Authorization: token,
+        },
+    });
+}
+
+useEffect(() => {
+  if (id !== undefined) {
+    buscarUsuarioPorId(id);
+  }
+}, [id]);
+
   async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
+    if (confirmaSenha === user.senha && user.senha.length >= 8) {
       setIsLoading(true);
-
-      try {
-        await cadastrarUsuario(`/usuarios/cadastrar`, usuario, setUsuario);
-        alert('Usuário cadastrado com sucesso');
-      } catch (error) {
-        alert('Erro ao cadastrar o Usuário');
+      if (id !== undefined) {
+        try {
+          await atualizarUsuario(`/usuarios/atualizar`, user, setUsuario, {
+            headers: {
+              Authorization: token,
+            },
+          });
+          toastAlerta('Usuário atualizado com sucesso', 'sucesso');
+          retornarPerfil()
+        } catch (error) {
+          toastAlerta('Erro ao atualizado o Usuário', 'erro');
+        }
+      } else {
+        try {
+          await cadastrarUsuario(`/usuarios/cadastrar`, user, setUsuario);
+          toastAlerta('Usuário cadastrado com sucesso', 'sucesso');
+          retornarCadastro();
+        } catch (error) {
+          toastAlerta('Erro ao cadastrar o Usuário', 'erro');
+        }
       }
+    } else if (user.senha.length < 8){
+      toastAlerta('Senhas menor que 8 caracteres. Verifique as informações de cadastro.', 'erro');
 
-    } else {
-      alert('Dados inconsistentes. Verifique as informações de cadastro.');
-      setUsuario({ ...usuario, senha: "" });
+      setConfirmaSenha("");
+    }else {
+      toastAlerta('Senhas inconsistentes. Verifique as informações de cadastro.', 'erro');
       setConfirmaSenha("");
     }
 
+    
     setIsLoading(false);
   }
 
@@ -81,7 +119,9 @@ function Cadastro() {
         className='flex justify-center items-center flex-col w-2/3 gap-3'
         onSubmit={cadastrarNovoUsuario}
       >
-        <h2 className='text-slate-900 text-5xl'>Cadastrar</h2>
+        <h2 className='dark:text-slate-300 text-slate-900 text-5xl'>
+          {id !== undefined ? 'Editar Usuario' : 'Cadastrar'}
+        </h2>
         <div className="flex flex-col w-full">
           <label htmlFor="nome">Nome</label>
           <input
@@ -89,8 +129,8 @@ function Cadastro() {
             id="nome"
             name="nome"
             placeholder="Nome"
-            className="border-2 border-slate-700 rounded p-2"
-            value={usuario.nome}
+            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
+            value={user.nome}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
@@ -101,8 +141,8 @@ function Cadastro() {
             id="usuario"
             name="usuario"
             placeholder="Usuario"
-            className="border-2 border-slate-700 rounded p-2"
-            value={usuario.usuario}
+            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
+            value={user.usuario}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
@@ -113,21 +153,21 @@ function Cadastro() {
             id="foto"
             name="foto"
             placeholder="Foto"
-            className="border-2 border-slate-700 rounded p-2"
-            value={usuario.foto}
+            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
+            value={user.foto}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
-       
+
         <div className="flex flex-col w-full">
-          
+
 
           <div className="flex flex-col gap-2">
             <p>Tipo</p>
             <select
               name="tipo"
               id="tipo"
-              className='border p-2 border-slate-800 rounded'
+              className='border p-2 dark:bg-black dark:border-slate-300 border-slate-800 rounded'
               onChange={handleSelectChange}
               value={tipoSelecionado}
             >
@@ -137,7 +177,7 @@ function Cadastro() {
             </select>
           </div>
         </div>
-      
+
         <div className="flex flex-col w-full">
           <label htmlFor="senha">Senha</label>
           <input
@@ -145,8 +185,8 @@ function Cadastro() {
             id="senha"
             name="senha"
             placeholder="Senha"
-            className="border-2 border-slate-700 rounded p-2"
-            value={usuario.senha}
+            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
+            value={user.senha}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
@@ -157,7 +197,7 @@ function Cadastro() {
             id="confirmarSenha"
             name="confirmarSenha"
             placeholder="Confirmar Senha"
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
             value={confirmaSenha}
             onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)}
           />
@@ -165,12 +205,11 @@ function Cadastro() {
         <div className="flex justify-around w-full gap-8">
           <button
             className='rounded text-white bg-red-400 hover:bg-red-700 w-1/2 py-2'
-            onClick={retornar}>
+            onClick={id !== undefined ? retornarPerfil : retornarCadastro}>
             Cancelar
           </button>
           <button
-            className='rounded text-white bg-indigo-400 hover:bg-indigo-900 w-1/2 
-                           py-2 flex justify-center'
+            className='rounded text-white bg-indigo-400 hover:bg-indigo-900 w-1/2 py-2 flex justify-center'
             type='submit'>
             {isLoading ? <RotatingLines
               strokeColor="white"
@@ -179,7 +218,7 @@ function Cadastro() {
               width="24"
               visible={true}
             /> :
-              <span>Cadastrar</span>
+              <span>{id !== undefined ? 'Atualizar' : 'Cadastrar'}</span>
             }
           </button>
         </div>
