@@ -16,10 +16,9 @@ function FormularioPostagem() {
     const [temas, setTemas] = useState<Tema[]>([]);
     const [tema, setTema] = useState<Tema>({ id: 0, nome: '', descricao: '' });
     const [postagem, setPostagem] = useState<Postagem>({} as Postagem);
-
+    const { usuario, handleLogout } = React.useContext(AuthContext);
     const { id } = useParams<{ id: string }>();
 
-    const { usuario, handleLogout } = React.useContext(AuthContext);
     const token = usuario.token;
 
     async function buscarPostagemPorId(postagemId: string) {
@@ -142,7 +141,7 @@ function FormularioPostagem() {
     const carregandoTema = tema.descricao === '';
 
     return (
-        <div className="container flex flex-col mx-auto items-center dark:bg-black ">
+        <div className="container flex flex-col mx-auto items-center dark:bg-black pb-5">
             <h1 className="text-4xl text-center my-8">
                 {id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}
             </h1>
@@ -157,7 +156,7 @@ function FormularioPostagem() {
                         placeholder="Insira aqui o Título"
                         name="titulo"
                         required
-                        className="border-2 border-slate-700 rounded p-2"
+                        className="border-2 border-slate-700 dark:border-slate-200 dark:bg-black rounded p-2"
                     />
                 </div>
 
@@ -171,7 +170,7 @@ function FormularioPostagem() {
                         placeholder="Adicione aqui o Texto da Postagem"
                         name="texto"
                         required
-                        className="border-2 border-slate-700 rounded p-2"
+                        className="border-2 border-slate-700 dark:border-slate-200 dark:bg-black rounded p-2"
                     />
                 </div>
 
@@ -184,7 +183,7 @@ function FormularioPostagem() {
                         type="text"
                         placeholder="Adicione aqui o link da Postagem"
                         name="link"
-                        className="border-2 border-slate-700 dark:border-slate-400 rounded p-2"
+                        className="border-2 border-slate-700 dark:border-slate-200 dark:bg-black rounded p-2"
                     />
                 </div>
 
@@ -193,7 +192,7 @@ function FormularioPostagem() {
                     <select
                         name="estado"
                         id="estado"
-                        className='border p-2 border-slate-800 rounded'
+                        className='border p-2 border-slate-800 rounded dark:border-slate-200 dark:bg-black'
                         onChange={handleSelectChange}
                         value={estadoSelecionado}
                     >
@@ -210,7 +209,7 @@ function FormularioPostagem() {
 
                 <div className="flex flex-col gap-2">
                     <p>Tema da Postagem</p>
-                    <select name="tema" id="tema" className='border p-2 border-slate-800 rounded'
+                    <select name="tema" id="tema" className='border p-2 border-slate-800 rounded dark:border-slate-200 dark:bg-black'
                         onChange={(e) => buscarTemaPorId(e.currentTarget.value)}
                     >
                         <option value="" selected disabled>Selecione um Tema</option>
@@ -227,7 +226,7 @@ function FormularioPostagem() {
                     type='submit'
                     disabled={carregandoTema}
                     className='flex justify-center rounded disabled:bg-slate-200 bg-indigo-400 
-                            hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto py-2'
+                    hover:bg-indigo-800 dark:hover:bg-indigo-950 text-white dark:disabled:bg-slate-600 dark:bg-indigo-800  font-bold w-1/2 mx-auto py-2'
                 >
 
                     {isLoading ?
