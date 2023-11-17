@@ -43,7 +43,7 @@ function CardPostagensFeed({ post }: CardPostagensProps) {
                     <strong>Comentarios</strong>
                     <div className='flex '>
                         <textarea
-                            className='w-full mt-4 mr-5'
+                            className='w-full mt-4 mr-5 dark:border-slate-200 dark:bg-black'
                             name='comment'
                             placeholder='Deixe seu comentário'
                             value={novoComentarioTexto}
