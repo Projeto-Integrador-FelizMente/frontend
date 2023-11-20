@@ -141,7 +141,7 @@ function FormularioPostagem() {
     const carregandoTema = tema.descricao === '';
 
     return (
-        <div className="container flex flex-col mx-auto items-center dark:bg-black pb-5">
+        <div className="container flex flex-col mx-auto items-center dark:bg-slate-900 pb-5">
             <h1 className="text-4xl text-center my-8">
                 {id !== undefined ? 'Editar Postagem' : 'Cadastrar Postagem'}
             </h1>
@@ -156,7 +156,7 @@ function FormularioPostagem() {
                         placeholder="Insira aqui o Título"
                         name="titulo"
                         required
-                        className="border-2 border-slate-700 dark:border-slate-200 dark:bg-black rounded p-2"
+                        className="border-2 border-slate-700 dark:border-slate-200 dark:bg-slate-900 rounded p-2"
                     />
                 </div>
 
@@ -170,7 +170,7 @@ function FormularioPostagem() {
                         placeholder="Adicione aqui o Texto da Postagem"
                         name="texto"
                         required
-                        className="border-2 border-slate-700 dark:border-slate-200 dark:bg-black rounded p-2"
+                        className="border-2 border-slate-700 dark:border-slate-200 dark:bg-slate-900 rounded p-2"
                     />
                 </div>
 
@@ -183,7 +183,7 @@ function FormularioPostagem() {
                         type="text"
                         placeholder="Adicione aqui o link da Postagem"
                         name="link"
-                        className="border-2 border-slate-700 dark:border-slate-200 dark:bg-black rounded p-2"
+                        className="border-2 border-slate-700 dark:border-slate-200 dark:bg-slate-900 rounded p-2"
                     />
                 </div>
 
@@ -192,7 +192,7 @@ function FormularioPostagem() {
                     <select
                         name="estado"
                         id="estado"
-                        className='border p-2 border-slate-800 rounded dark:border-slate-200 dark:bg-black'
+                        className='border p-2 border-slate-800 rounded dark:border-slate-200 dark:bg-slate-900'
                         onChange={handleSelectChange}
                         value={estadoSelecionado}
                     >
@@ -209,7 +209,7 @@ function FormularioPostagem() {
 
                 <div className="flex flex-col gap-2">
                     <p>Tema da Postagem</p>
-                    <select name="tema" id="tema" className='border p-2 border-slate-800 rounded dark:border-slate-200 dark:bg-black'
+                    <select name="tema" id="tema" className='border p-2 border-slate-800 rounded dark:border-slate-200 dark:bg-slate-900'
                         onChange={(e) => buscarTemaPorId(e.currentTarget.value)}
                     >
                         <option value="" selected disabled>Selecione um Tema</option>
@@ -225,8 +225,7 @@ function FormularioPostagem() {
 
                     type='submit'
                     disabled={carregandoTema}
-                    className='flex justify-center rounded disabled:bg-slate-200  dark:bg-indigo-900 bg-indigo-400 
-                            hover:bg-indigo-800 text-white font-bold w-1/2 mx-auto py-2'
+                    className='flex justify-center font-bold w-1/2 mx-auto py-2 rounded disabled:bg-slate-200 disabled:shadow-gray-300  shadow-lg shadow-yellow-800  bg-yellow-500 hover:bg-yellow-800 dark:disabled:bg-slate-600 dark:disabled:shadow-gray-600 dark:bg-blue-800 dark:hover:bg-blue-950 dark:shadow-blue-500'
                 >
 
                     {isLoading ?

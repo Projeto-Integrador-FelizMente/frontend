@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { cadastrarUsuario, atualizarUsuario, buscar } from '../../services/Service';
 import Usuario from '../../models/User';
 import { AuthContext } from '../../contexts/AuthContext';
@@ -32,7 +32,7 @@ function Cadastro() {
  
 
   function retornarCadastro() {
-    navigate('/login');
+    navigate('/home');
   }
 
   function retornarPerfil() {
@@ -129,7 +129,7 @@ useEffect(() => {
             id="nome"
             name="nome"
             placeholder="Nome"
-            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
+            className="border-2 dark:bg-slate-900 dark:border-slate-300 border-slate-700 rounded p-2"
             value={user.nome}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
@@ -141,7 +141,7 @@ useEffect(() => {
             id="usuario"
             name="usuario"
             placeholder="Usuario"
-            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
+            className="border-2 dark:bg-slate-900 dark:border-slate-300 border-slate-700 rounded p-2"
             value={user.usuario}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
@@ -153,7 +153,7 @@ useEffect(() => {
             id="foto"
             name="foto"
             placeholder="Foto"
-            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
+            className="border-2 dark:bg-slate-900 dark:border-slate-300 border-slate-700 rounded p-2"
             value={user.foto}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
@@ -167,7 +167,7 @@ useEffect(() => {
             <select
               name="tipo"
               id="tipo"
-              className='border p-2 dark:bg-black dark:border-slate-300 border-slate-800 rounded'
+              className='border p-2 dark:bg-slate-900 dark:border-slate-300 border-slate-800 rounded'
               onChange={handleSelectChange}
               value={tipoSelecionado}
             >
@@ -185,7 +185,7 @@ useEffect(() => {
             id="senha"
             name="senha"
             placeholder="Senha"
-            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
+            className="border-2 dark:bg-slate-900 dark:border-slate-300 border-slate-700 rounded p-2"
             value={user.senha}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
@@ -197,19 +197,19 @@ useEffect(() => {
             id="confirmarSenha"
             name="confirmarSenha"
             placeholder="Confirmar Senha"
-            className="border-2 dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
+            className="border-2 dark:bg-slate-900 dark:border-slate-300 border-slate-700 rounded p-2"
             value={confirmaSenha}
             onChange={(e: ChangeEvent<HTMLInputElement>) => handleConfirmarSenha(e)}
           />
         </div>
         <div className="flex justify-around w-full gap-8">
           <button
-            className='rounded text-white bg-red-400 hover:bg-red-700 w-1/2 py-2'
+            className='rounded shadow-lg shadow-red-800 dark:bg-red-700 dark:hover:bg-red-950 text-white bg-red-400 hover:bg-red-700 w-1/2 py-2'
             onClick={id !== undefined ? retornarPerfil : retornarCadastro}>
             Cancelar
           </button>
           <button
-            className='rounded text-white bg-indigo-400 hover:bg-indigo-900 w-1/2 py-2 flex justify-center'
+            className='rounded text-white shadow-lg shadow-yellow-800 dark:shadow-blue-500 bg-yellow-500 dark:bg-blue-800 hover:bg-yellow-800 dark:hover:bg-blue-950 w-1/2 py-2 flex justify-center'
             type='submit'>
             {isLoading ? <RotatingLines
               strokeColor="white"
@@ -222,6 +222,14 @@ useEffect(() => {
             }
           </button>
         </div>
+        <hr className="border-slate-800 w-full" />
+
+          <p>
+            Já possui uma conta conosco?{' '}
+            <Link to="/login" className="text-yellow-500 hover:underline">
+              Logar-se
+            </Link>
+          </p>
       </form>
     </div>
   );

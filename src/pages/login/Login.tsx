@@ -33,6 +33,9 @@ function Login() {
     e.preventDefault()
     handleLogin(usuarioLogin)
   }
+  function retorno() {
+    navigate('/home');
+  }
 
   return (
     <>
@@ -46,7 +49,7 @@ function Login() {
               id="usuario"
               name="usuario"
               placeholder="Usuario"
-              className="border-2 dark:bg-black dark:border-slate-300 border-slate-900 rounded p-2"
+              className="border-2 dark:bg-slate-900 dark:border-slate-300 border-slate-900 rounded p-2"
               value={usuarioLogin.usuario}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
@@ -58,15 +61,20 @@ function Login() {
               id="senha"
               name="senha"
               placeholder="Senha"
-              className="border-2 dark:bg-black dark:border-slate-300 border-slate-900 rounded p-2"
+              className="border-2 dark:bg-slate-900 dark:border-slate-300 border-slate-900 rounded p-2"
               value={usuarioLogin.senha}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>
+          <div className='flex w-full'>
+          <button
+            className='rounded text-white shadow-lg shadow-red-800 bg-red-400 dark:bg-red-700 hover:bg-red-700 dark:hover:bg-red-950 w-1/2 py-2 m-2' 
+            onClick={retorno}>
+            Cancelar
+          </button>
           <button
             type='submit'
-            className="rounded bg-blue-500 flex justify-center
-                                   hover:bg-yellow-500 text-white w-1/2 py-2">
+            className="rounded shadow-lg shadow-yellow-800 dark:shadow-blue-500 bg-yellow-500 dark:bg-blue-800  hover:bg-yellow-800 dark:hover:bg-blue-950 flex justify-center  text-white w-1/2 py-2 m-2">
             {isLoading ? <RotatingLines
               strokeColor="white"
               strokeWidth="5"
@@ -77,7 +85,7 @@ function Login() {
               <span>Entrar</span>
             }
           </button>
-
+          </div>
           <hr className="border-slate-800 w-full" />
 
           <p>

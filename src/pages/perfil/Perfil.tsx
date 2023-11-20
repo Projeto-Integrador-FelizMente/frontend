@@ -23,16 +23,14 @@ function Perfil() {
         <>
             <div className='flex'>
 
-                <div className='container w-1/4 h-[100] min-h-screen bg-purple-400 dark:bg-purple-800  col-span-3'>
+                <div className='container w-1/4 h-[100] min-h-screen bg-purple-400 dark:bg-purple-800 '>
 
-                    <img
-                        className='rounded-full w-56 h-56 mx-auto text-center mt-4 border-slate-900 border justify-center'
-                        src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`} />
+                    <img className='rounded-full w-56 h-56 mx-auto mt-4 border-slate-900 border relative z-1'
+                        src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`}
+                       
+                         />
 
-                    <div
-                        className=" ml-2 mt-2 flex flex-col
-                     text-white text-xl justify-center"
-                    >
+                    <div className=" ml-2 mt-2 flex flex-col text-white text-xl justify-center">
                         <p className=' font-bold'>Nome:</p>
                         <p>{usuario.nome}</p>
                         <p className='font-bold'>Email:</p>

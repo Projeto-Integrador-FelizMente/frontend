@@ -103,7 +103,7 @@ function FormularioTema() {
   }
 
   return (
-    <div className=" dark:bg-black dark:border-slate-300 container flex flex-col items-center justify-center mx-auto">
+    <div className=" dark:bg-slate-900 dark:border-slate-300 container flex flex-col items-center justify-center mx-auto">
       <h1 className="text-4xl text-center my-8">
         {id === undefined ? "Cadastrar Tema" : "Editar Tema"}
       </h1>
@@ -115,7 +115,7 @@ function FormularioTema() {
             type="text"
             placeholder="Escreva o nome do Tema"
             name="Nome"
-            className="border-2  dark:bg-black dark:border-slate-300 border-slate-700 rounded p-2"
+            className="border-2  dark:bg-slate-900 dark:border-slate-300 border-slate-700 rounded p-2"
             value={tema.nome}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
@@ -124,14 +124,13 @@ function FormularioTema() {
             type="text"
             placeholder="Descreva aqui seu tema"
             name="descricao"
-            className="border-2 dark:border-slate-200 dark:bg-black border-slate-700 rounded p-2"
+            className="border-2 dark:border-slate-200 dark:bg-slate-900 border-slate-700 rounded p-2"
             value={tema.descricao}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
           />
         </div>
         <button
-          className="rounded text-slate-100 bg-indigo-400 
-                    hover:bg-indigo-800 dark:bg-indigo-700 dark:hover:bg-indigo-950 w-1/2 py-2 mx-auto flex justify-center"
+          className="w-1/2 py-2 mx-auto flex justify-center rounded shadow-lg shadow-yellow-800  bg-yellow-500 hover:bg-yellow-800  dark:bg-blue-800 dark:hover:bg-blue-950 dark:shadow-blue-500 "
           type="submit"
         >
           {isLoading ? (

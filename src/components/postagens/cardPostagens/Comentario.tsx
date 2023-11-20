@@ -4,7 +4,8 @@ interface ComentariosProps {
 
 function Comentarios({ conteudo }: ComentariosProps) {
     return (
-        <p className="mx-6 mb-4 ">{conteudo}</p>
+        
+        <p className="mx-6 mb-4">{conteudo}</p>
     )
 }
 

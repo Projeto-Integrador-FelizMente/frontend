@@ -26,7 +26,7 @@ function CardPostagens({ post }: CardPostagensProps) {
     }
 
     return (
-        <div className='border-slate-900 border 
+        <div className='border-slate-900 dark:border-slate-700 border 
             flex flex-col rounded overflow-hidden justify-between min-h-[300px]'>
 
             <div>
@@ -35,7 +35,7 @@ function CardPostagens({ post }: CardPostagensProps) {
                 <div className='p-4'>
                     <h4 className='text-lg font-semibold uppercase truncate'>{post.titulo}</h4>
                     <p className='text-amber-600 font-bold'>Status: {post.estado}</p>
-                    <p className='text-blue-900 font-bold'>Tema: {post.tema?.nome}</p>
+                    <p className='text-blue-900 dark:text-blue-600 font-bold'>Tema: {post.tema?.nome}</p>
                     <hr className='w-full' />
                     {component}
                     {post.texto.length >= 80 && (
