@@ -29,9 +29,7 @@ function Navbar() {
     navigate('/login');
   };
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-  };
+ 
 
   const renderAuthenticatedNavbar = () => (
     <div className="bg-gradient-to-r from-yellow-300 to-pink-400 w-full justify-between flex flex-wrap dark:bg-gradient-to-r dark:from-purple-900 dark:to-pink-800  top-0">
