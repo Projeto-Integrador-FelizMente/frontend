@@ -77,6 +77,10 @@ function Cadastro() {
     e.preventDefault();
 
     if (confirmaSenha === user.senha && user.senha.length >= 8) {
+      if(usuario.usuario === user.usuario){
+        console.log("Usuario igual")
+
+      }
       setIsLoading(true);
       if (id !== undefined) {
         try {
