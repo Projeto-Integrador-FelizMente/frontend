@@ -18,9 +18,27 @@ function CardPostagensFeed({ post }: CardPostagensProps) {
     function atualizarNovoComentario(event: ChangeEvent<HTMLTextAreaElement>) {
         setNovoComentarioTexto(event.target.value)
     }
+
+    const [isTextExpanded, setIsTextExpanded] = useState(false);
+
+    let component;
+
+    if (isTextExpanded || post.texto.length <= 500) {
+        component = <p id='textoPost' className='m-5'>{post.texto}</p>;
+    } else {
+        component = (
+            <p
+                id='textoPost'
+                className='h-32 overflow-hidden m-5'
+            >
+                {post.texto}
+            </p>
+        );
+    }
+
     return (
         <div className='flex justify-center'>
-            <div className='dark:border-slate-300 border-slate-900 border flex-col w-[75%] dark:bg-slate-900 dark:text-white'>
+            <div className='dark:border-slate-300 border-slate-900 border flex-col w-full sm:w-[95%] md:w-[75%] lg:w-[55%] dark:bg-slate-900 dark:text-white'>
 
                 <div>
                     <div className="py-2 px-6 bg-gradient-to-r from-yellow-300 to-pink-400 font-bold text-2xl dark:bg-gradient-to-r dark:from-yellow-600 dark:to-pink-600">
@@ -30,7 +48,15 @@ function CardPostagensFeed({ post }: CardPostagensProps) {
                         <p className='text-amber-600 font-bold ml-6'>Status: {post.estado}</p>
                         <p className='text-blue-900 dark:text-blue-600 font-bold ml-6'>Tema: {post.tema?.nome}</p>
                         <hr className='w-full' />
-                        <p className='m-5'>{post.texto}</p>
+                        {component}
+                        {post.texto.length >= 350 && (
+                            <button
+                                onClick={() => setIsTextExpanded(!isTextExpanded)}
+                                className='text-blue-500 hover:underline focus:outline-none'
+                            >
+                                {isTextExpanded ? 'Mostrar menos' : 'Mostrar mais'}
+                            </button>
+                        )}
                         <p>{post.link}</p>
                         <p>Data: {new Intl.DateTimeFormat(undefined, {
                             dateStyle: 'full',
@@ -55,7 +81,7 @@ function CardPostagensFeed({ post }: CardPostagensProps) {
                         </button>
                     </div>
                 </form>
-                <div className='border-slate-900'>   
+                <div className='border-slate-900'>
                     {comentarios.map(comentario => {
                         return (
                             <Comentarios conteudo={comentario} />

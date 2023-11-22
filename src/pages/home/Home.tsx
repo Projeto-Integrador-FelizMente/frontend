@@ -3,7 +3,7 @@ function Home() {
     <>
       <div className="bg-amber-50 border-b-2 border-zinc-300 dark:border-slate-600  flex justify-center dark:bg-rose-800 dark:text-white">
         <div className='flex grid-cols-2 text-black items-center justify-between '>
-          <h2 className='dark:text-white text-5xl font-bold text-center'>
+          <h2 className='dark:text-white text-2xl sm:text-3xl md:text-5xl lg:text-6x1 font-bold text-center'>
             Caminhando juntos rumo à FelizMente!
           </h2>
           <img
@@ -13,7 +13,7 @@ function Home() {
           />
         </div>
       </div>
-      <div className='grid grid-cols-2 mx-8 mb-5'>
+      <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 mx-8 mb-5'>
         <div>
           <h1 className='text-5xl font-bold text-Start m-10'>
             Sobre
@@ -34,7 +34,7 @@ function Home() {
             </div>
         </div>
         <div className="">
-          <img src="https://i.imgur.com/cGdR71c.png" alt="Imagem Home" className='w-full h-full '/>
+          <img src="https://i.imgur.com/9qL8DQ1.png" alt="Imagem Home" className='w-full h-full '/>
         </div>
       </div>
 

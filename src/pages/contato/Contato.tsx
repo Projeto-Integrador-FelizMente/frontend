@@ -40,9 +40,11 @@ function Contato() {
 
   return (
     <div>
-      <h1 className="text-4xl font-bold text-center">Contatos</h1>
+      <h1 className="text-4xl font-bold mt-4 text-center">
+        Contatos
+      </h1>
       <div className="mx-auto w-max flex">
-        <div className="grid grid-cols-6 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6 gap-4">
           {contatos.map((contato) => (
             <CardContato
               nome={contato.nome}
