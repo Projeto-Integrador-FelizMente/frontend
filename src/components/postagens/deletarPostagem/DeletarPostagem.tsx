@@ -69,7 +69,7 @@ function DeletarPostagem() {
     }
 
     function retornar() {
-        navigate("/postagens")
+        navigate("/perfil")
     }
 
     return (
@@ -91,13 +91,13 @@ function DeletarPostagem() {
                 </div>
                 <div className="flex">
                     <button
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 dark:bg-red-700 dark:hover:bg-red-950 w-full py-2'
+                        className='text-slate-100 shadow-lg shadow-red-800 bg-red-400 dark:bg-red-700 hover:bg-red-700 dark:hover:bg-red-950 w-full py-2'
                         onClick={retornar}>
                         Não
                     </button>
 
                     <button
-                        className='w-full text-slate-100 bg-indigo-400 dark:bg-indigo-700 dark:hover:bg-indigo-950 hover:bg-indigo-600 flex items-center justify-center'
+                        className='w-full text-slate-100 shadow-lg shadow-yellow-800 dark:shadow-blue-500 bg-yellow-500 dark:bg-blue-800  hover:bg-yellow-800 dark:hover:bg-blue-950'
                         onClick={deletarPostagem}>
 
                         {isLoading ?

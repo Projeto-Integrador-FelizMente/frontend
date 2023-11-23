@@ -73,7 +73,7 @@ function DeletarTema() {
     }
 
     return (
-        <div className='container w-1/3 mx-auto mb-3'>
+        <div className='container w-full sm:w-1/3 md:w-2/3 lg:w-3/4 mx-auto mb-3'>
             <h1 className='text-4xl text-center my-4'>Deletar Tema</h1>
 
             <p className='text-center font-semibold mb-4'>
@@ -89,13 +89,13 @@ function DeletarTema() {
                 <div className="flex">
 
                     <button
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 dark:bg-red-700 dark:hover:bg-red-950 w-full py-2'
+                        className='text-slate-100 shadow-lg shadow-red-800 bg-red-400 dark:bg-red-700 hover:bg-red-700 dark:hover:bg-red-950 w-full py-2'
                         onClick={retornar}>
                         Não
                     </button>
 
                     <button
-                        className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 dark:bg-indigo-700 dark:hover:bg-indigo-950 flex items-center justify-center '
+                        className='w-full text-slate-100 shadow-lg shadow-yellow-800 dark:shadow-blue-500 bg-yellow-500 dark:bg-blue-800  hover:bg-yellow-800 dark:hover:bg-blue-950 py-2 '
                         onClick={deletarTema}>
 
                         {isLoading ?

@@ -1,5 +1,5 @@
 import { ChangeEvent, useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
@@ -7,6 +7,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 
 import Tema from "../../../models/Tema";
 import { toastAlerta } from "../../../utils/toastAlerta";
+import { ArrowCircleLeft } from '@phosphor-icons/react';
 
 function FormularioTema() {
   const navigate = useNavigate();
@@ -145,6 +146,11 @@ function FormularioTema() {
             <span>Confirmar</span>
           )}
         </button>
+        <div className="lg:hidden fixed left-4 flex items-center">
+                <Link to='/postagens'>
+                <ArrowCircleLeft size={48} weight="bold" />
+                </Link>
+                </div>
       </form>
     </div>
   );
