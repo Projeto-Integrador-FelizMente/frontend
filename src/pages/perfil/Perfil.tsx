@@ -18,7 +18,6 @@ function Perfil() {
         }
     }, [usuario.token])
 
-    console.log(usuario)
     return (
         <>
             <div className='sm:flex lg:flex md:flex'>

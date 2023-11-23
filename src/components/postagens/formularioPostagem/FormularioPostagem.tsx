@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { RotatingLines } from 'react-loader-spinner';
 
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
@@ -8,6 +8,7 @@ import { AuthContext } from '../../../contexts/AuthContext';
 import Tema from '../../../models/Tema';
 import Postagem from '../../../models/Postagem';
 import { toastAlerta } from '../../../utils/toastAlerta';
+import { ArrowCircleLeft } from '@phosphor-icons/react';
 
 function FormularioPostagem() {
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ function FormularioPostagem() {
     const [postagem, setPostagem] = useState<Postagem>({} as Postagem);
     const { usuario, handleLogout } = React.useContext(AuthContext);
     const { id } = useParams<{ id: string }>();
+
 
     const token = usuario.token;
 
@@ -75,11 +77,6 @@ function FormularioPostagem() {
             user: usuario,
         }));
     }
-
-    function retornar() {
-        navigate('/perfil');
-    }
-
     async function gerarNovaPostagem(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
         setIsLoading(true);
@@ -93,6 +90,7 @@ function FormularioPostagem() {
                 });
 
                 toastAlerta('Postagem atualizada com sucesso', 'sucesso');
+             
             } catch (error: any) {
                 if (error.toString().includes('403')) {
                     toastAlerta('O token expirou, favor logar novamente', 'info');
@@ -110,6 +108,7 @@ function FormularioPostagem() {
                 });
 
                 toastAlerta('Postagem cadastrada com sucesso', 'sucesso');
+                
             } catch (error: any) {
                 if (error.toString().includes('403')) {
                     toastAlerta('O token expirou, favor logar novamente', 'info');
@@ -121,9 +120,7 @@ function FormularioPostagem() {
         }
 
         setIsLoading(false);
-        retornar();
     }
-
     const [estadoSelecionado, setEstadoSelecionado] = useState('');
 
     const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -239,6 +236,11 @@ function FormularioPostagem() {
                         <span>Confirmar</span>
                     }
                 </button>
+                <div className="lg:hidden fixed bottom- left-4 flex items-center">
+                <Link to='/postagens'>
+                <ArrowCircleLeft size={48} weight="bold" />
+                </Link>
+                </div>
             </form>
         </div>
     )
