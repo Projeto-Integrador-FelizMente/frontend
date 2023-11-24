@@ -1,12 +1,18 @@
 import Popup from 'reactjs-popup';
-import FormularioPostagem from '../formularioTema/FormularioTema';
+import FormularioTema from '../formularioTema/FormularioTema';
 import { Plus } from '@phosphor-icons/react'
 import 'reactjs-popup/dist/index.css';
 import './ModalTema.css'
 import { useTheme } from '../../../hooks/useTheme';
 import { useMediaQuery } from 'react-responsive';
+import Tema from '../../../models/Tema';
 
-function ModalPostagem() {
+interface ModalTemaProps{
+    temas: Tema[]
+    getTemas: () => void
+  }
+
+function ModalTema({temas, getTemas} : ModalTemaProps) {
 const { theme } = useTheme();
 
 const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -21,11 +27,11 @@ const isMobile = useMediaQuery({ maxWidth: 767 });
                 contentStyle={{ width: isMobile ? '100vw' : 'auto', height: isMobile ? '100vh' : 'auto' }}
                 className={`modal ${theme === 'dark' ? 'dark' : ''}`} 
             >
-                <FormularioPostagem />
+                <FormularioTema temas={temas} getTemas={getTemas}/>
             </Popup>
 
         </>
     );
 }
 
-export default ModalPostagem;
+export default ModalTema;

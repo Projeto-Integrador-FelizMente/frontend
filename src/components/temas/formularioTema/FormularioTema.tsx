@@ -9,7 +9,13 @@ import Tema from "../../../models/Tema";
 import { toastAlerta } from "../../../utils/toastAlerta";
 import { ArrowCircleLeft } from '@phosphor-icons/react';
 
-function FormularioTema() {
+interface ModalTemaProps{
+  temas: Tema[]
+  getTemas: () => void
+}
+
+
+function FormularioTema({temas, getTemas}: ModalTemaProps) {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -96,6 +102,7 @@ function FormularioTema() {
     }
 
     setIsLoading(false);
+    getTemas();
     retornar();
   }
 

@@ -13,25 +13,29 @@ import { toastAlerta } from "../../../utils/toastAlerta";
 function ListaPostagensById() {
   const navigate = useNavigate();
 
-  const [postagens, setPostagens] = useState<Postagem[]>([]);
-
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
 
-  async function buscarPostagens() {
-    try {
-      await buscar("/postagens", setPostagens, {
-        headers: {
-          Authorization: token,
-        },
-      });
-    } catch (error: any) {
-      if (error.toString().includes("403")) {
-        toastAlerta("O token expirou, favor logar novamente", 'info');
-        handleLogout();
+    const [postagens, setPostagens] = useState<Postagem[]>([]);
+
+    async function buscarPostagens() {
+        try {
+          await buscar("/postagens", setPostagens, {
+            headers: {
+              Authorization: token,
+            },
+          });
+        } catch (error: any) {
+          if (error.toString().includes("403")) {
+            toastAlerta("O token expirou, favor logar novamente", 'info');
+            handleLogout();
+          }
+        }
       }
-    }
-  }
+
+      useEffect(() => {
+        buscarPostagens();
+      }, [token]);
 
   useEffect(() => {
     if (token === "") {
@@ -40,9 +44,7 @@ function ListaPostagensById() {
     }
   }, [token, navigate]);
 
-  useEffect(() => {
-    buscarPostagens();
-  }, [token]);
+
 
   return (
     <>
@@ -63,7 +65,7 @@ function ListaPostagensById() {
             <CardPostagens key={filteredPostagem.id} post={filteredPostagem} />
           ))}
       </div>
-      <ModalPostagem />
+      <ModalPostagem posts={postagens} getPosts={buscarPostagens}/>
     </>
   );
 }

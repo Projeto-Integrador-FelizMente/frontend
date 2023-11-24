@@ -5,9 +5,14 @@ import 'reactjs-popup/dist/index.css';
 import './ModalPostagem.css';
 import { useTheme } from '../../../hooks/useTheme';
 import { useMediaQuery } from 'react-responsive';
+import Postagem from '../../../models/Postagem';
 
+interface ModalPostagemProps{
+  posts: Postagem[]
+  getPosts: () => void
+}
 
-function ModalPostagem() {
+function ModalPostagem({ posts, getPosts }: ModalPostagemProps) {
   const { theme } = useTheme();
 
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -22,7 +27,7 @@ function ModalPostagem() {
         className={`modal ${theme === 'dark' ? 'dark' : ''}`}
         contentStyle={{ width: isMobile ? '100vw' : 'auto', height: isMobile ? '100vh' : 'auto' }}
       >
-        <FormularioPostagem/>
+        <FormularioPostagem posts={posts} getPosts={getPosts} />
       </Popup>
     </>
   );

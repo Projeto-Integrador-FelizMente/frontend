@@ -18,7 +18,7 @@ function Home() {
           <h1 className='text-5xl font-bold text-Start m-10'>
             Sobre
           </h1>
-          <div className="flex text-justify items-center flex-col gap-3 w-full">
+          <div className="flex text-justify lg:text-2xl items-center flex-col gap-3 w-full">
               <p>
                 Bem-vindo ao FelizMente, um refúgio virtual construído com a missão de cuidar da saúde mental e inspirado pela nobre causa da ONU, em especial a ODS 03 - Saúde e Bem-Estar. Em um mundo onde as batalhas internas muitas vezes permanecem silenciosas, nosso site surge como uma luz acolhedora para aqueles que enfrentam a depressão e a ansiedade.
               </p>

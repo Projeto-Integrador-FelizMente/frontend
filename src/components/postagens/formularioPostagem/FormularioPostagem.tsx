@@ -10,13 +10,27 @@ import Postagem from '../../../models/Postagem';
 import { toastAlerta } from '../../../utils/toastAlerta';
 import { ArrowCircleLeft } from '@phosphor-icons/react';
 
-function FormularioPostagem() {
+interface FormularioPostagemProps{
+    posts: Postagem[]
+    getPosts: () => void
+  }
+
+function FormularioPostagem({ posts, getPosts}: FormularioPostagemProps) {
     const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [temas, setTemas] = useState<Tema[]>([]);
     const [tema, setTema] = useState<Tema>({ id: 0, nome: '', descricao: '' });
-    const [postagem, setPostagem] = useState<Postagem>({} as Postagem);
+    const [postagem, setPostagem] = useState<Postagem>({
+        id: 0,
+        titulo: '',
+        estado: "",
+        texto: "",
+        link: "",
+        data: "",
+        tema: null,
+        user: null,
+    });
     const { usuario, handleLogout } = React.useContext(AuthContext);
     const { id } = useParams<{ id: string }>();
 
@@ -107,6 +121,7 @@ function FormularioPostagem() {
                     },
                 });
 
+
                 toastAlerta('Postagem cadastrada com sucesso', 'sucesso');
                 
             } catch (error: any) {
@@ -120,7 +135,9 @@ function FormularioPostagem() {
         }
 
         setIsLoading(false);
+        getPosts()
     }
+
     const [estadoSelecionado, setEstadoSelecionado] = useState('');
 
     const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {

@@ -63,7 +63,7 @@ function ListaTemas() {
         ))}
 
       </div>
-      <ModalTema />
+      <ModalTema temas={temas} getTemas={buscarTemas}/>
     </>
   );
 }
