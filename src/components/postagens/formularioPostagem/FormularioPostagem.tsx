@@ -239,7 +239,7 @@ function FormularioPostagem({ posts, getPosts}: FormularioPostagemProps) {
 
                     type='submit'
                     disabled={carregandoTema}
-                    className='flex justify-center font-bold w-1/2 mx-auto py-2 rounded disabled:bg-slate-200 disabled:shadow-gray-300  shadow-lg shadow-yellow-800  bg-yellow-500 hover:bg-yellow-800 dark:disabled:bg-slate-600 dark:disabled:shadow-gray-600 dark:bg-blue-800 dark:hover:bg-blue-950 dark:shadow-blue-500'
+                    className='flex justify-center font-bold w-1/2 mx-auto py-2 rounded disabled:bg-slate-200 disabled:shadow-gray-300  shadow-lg shadow-yellow-800  bg-yellow-500 hover:bg-yellow-800 dark:disabled:bg-slate-600 dark:disabled:shadow-gray-600 dark:bg-blue-800 dark:hover:bg-blue-950 dark:shadow-blue-500 text-center'
                 >
 
                     {isLoading ?

@@ -138,7 +138,7 @@ function FormularioTema({temas, getTemas}: ModalTemaProps) {
           />
         </div>
         <button
-          className="w-1/2 py-2 mx-auto flex justify-center rounded shadow-lg shadow-yellow-800  bg-yellow-500 hover:bg-yellow-800  dark:bg-blue-800 dark:hover:bg-blue-950 dark:shadow-blue-500 "
+          className="w-1/2 text-center py-2 mx-auto flex justify-center rounded shadow-lg shadow-yellow-800  bg-yellow-500 hover:bg-yellow-800  dark:bg-blue-800 dark:hover:bg-blue-950 dark:shadow-blue-500 "
           type="submit"
         >
           {isLoading ? (

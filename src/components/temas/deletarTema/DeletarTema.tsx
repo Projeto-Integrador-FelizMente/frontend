@@ -89,13 +89,13 @@ function DeletarTema() {
                 <div className="flex">
 
                     <button
-                        className='text-slate-100 shadow-lg shadow-red-800 bg-red-400 dark:bg-red-700 hover:bg-red-700 dark:hover:bg-red-950 w-full py-2'
+                        className='text-slate-100 text-center shadow-lg shadow-red-800 bg-red-400 dark:bg-red-700 hover:bg-red-700 dark:hover:bg-red-950 w-full py-2'
                         onClick={retornar}>
                         Não
                     </button>
 
                     <button
-                        className='w-full text-slate-100 shadow-lg shadow-yellow-800 dark:shadow-blue-500 bg-yellow-500 dark:bg-blue-800  hover:bg-yellow-800 dark:hover:bg-blue-950 py-2 '
+                        className='w-full text-center text-slate-100 shadow-lg shadow-yellow-800 dark:shadow-blue-500 bg-yellow-500 dark:bg-blue-800  hover:bg-yellow-800 dark:hover:bg-blue-950 py-2 '
                         onClick={deletarTema}>
 
                         {isLoading ?
