@@ -32,9 +32,7 @@ function Footer() {
         <p className='text-xl font-bold'>
           FelizMente | Copyright ©️ {data}
         </p>
-        <Link to="/contato" className='hover:underline'>
-          <p className='text-lg'>Contatos</p>
-        </Link>
+        <a className='hover:underline text-lg' href="https://linktr.ee/felizmentee" target="_blank" rel="noopener noreferrer">Contatos</a>
       </div>
     </div>
   );
