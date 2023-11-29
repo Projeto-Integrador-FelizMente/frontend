@@ -10,8 +10,8 @@ import { toastAlerta } from "../../../utils/toastAlerta";
 import { ArrowCircleLeft } from '@phosphor-icons/react';
 
 interface ModalTemaProps{
-  temas: Tema[]
-  getTemas: () => void
+  temas?: Tema[]
+  getTemas?: () => void
 }
 
 

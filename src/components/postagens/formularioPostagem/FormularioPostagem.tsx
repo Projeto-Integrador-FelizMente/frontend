@@ -11,8 +11,8 @@ import { toastAlerta } from '../../../utils/toastAlerta';
 import { ArrowCircleLeft } from '@phosphor-icons/react';
 
 interface FormularioPostagemProps{
-    posts: Postagem[]
-    getPosts: () => void
+    posts?: Postagem[]
+    getPosts?: () => void
   }
 
 function FormularioPostagem({ posts, getPosts}: FormularioPostagemProps) {
