@@ -7,7 +7,7 @@ import { useTheme } from '../../../hooks/useTheme';
 import { useMediaQuery } from 'react-responsive';
 import Postagem from '../../../models/Postagem';
 
-interface ModalPostagemProps{
+interface ModalPostagemProps {
   posts: Postagem[]
   getPosts: () => void
 }
@@ -21,11 +21,11 @@ function ModalPostagem({ posts, getPosts }: ModalPostagemProps) {
     <>
       <Popup
         trigger={
-          <Plus className="fixed bottom-12 right-8 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring bg-gradient-to-r from-yellow-400 to-cyan-500 w-16 h-16 dark:hover:bg-gradient-to-tr dark:bg-gradient-to-r dark:from-purple-800 dark:to-cyan-800"/>
+          <Plus className="fixed bottom-12 right-8 text-white p-3 rounded-full shadow-lg focus:outline-none focus:ring bg-gradient-to-r from-yellow-300 to-pink-400 w-16 h-16 dark:hover:bg-gradient-to-tr dark:bg-gradient-to-r dark:from-purple-800 dark:to-cyan-800" />
         }
         modal
         className={`modal ${theme === 'dark' ? 'dark' : ''}`}
-        contentStyle={{ width: isMobile ? '100vw' : 'auto', height: isMobile ? '100vh' : 'auto' }}
+        contentStyle={{ width: isMobile ? '100vw' : '65vw', height: isMobile ? '100vh' : '65vh' }}
       >
         <FormularioPostagem posts={posts} getPosts={getPosts} />
       </Popup>
