@@ -25,7 +25,7 @@ function ModalPostagem({ posts, getPosts }: ModalPostagemProps) {
         }
         modal
         className={`modal ${theme === 'dark' ? 'dark' : ''}`}
-        contentStyle={{ width: isMobile ? '100vw' : '65vw', height: isMobile ? '100vh' : '65vh' }}
+        contentStyle={{ width: isMobile ? '100vw' : '65vw', height: isMobile ? '100vh' : 'auto' }}
       >
         <FormularioPostagem posts={posts} getPosts={getPosts} />
       </Popup>

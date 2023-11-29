@@ -10,12 +10,12 @@ import Postagem from '../../../models/Postagem';
 import { toastAlerta } from '../../../utils/toastAlerta';
 import { ArrowCircleLeft } from '@phosphor-icons/react';
 
-interface FormularioPostagemProps{
+interface FormularioPostagemProps {
     posts?: Postagem[]
     getPosts?: () => void
-  }
+}
 
-function FormularioPostagem({ posts, getPosts}: FormularioPostagemProps) {
+function FormularioPostagem({ posts, getPosts }: FormularioPostagemProps) {
     const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -104,7 +104,7 @@ function FormularioPostagem({ posts, getPosts}: FormularioPostagemProps) {
                 });
 
                 toastAlerta('Postagem atualizada com sucesso', 'sucesso');
-             
+
             } catch (error: any) {
                 if (error.toString().includes('403')) {
                     toastAlerta('O token expirou, favor logar novamente', 'info');
@@ -123,7 +123,7 @@ function FormularioPostagem({ posts, getPosts}: FormularioPostagemProps) {
 
 
                 toastAlerta('Postagem cadastrada com sucesso', 'sucesso');
-                
+
             } catch (error: any) {
                 if (error.toString().includes('403')) {
                     toastAlerta('O token expirou, favor logar novamente', 'info');
@@ -254,9 +254,9 @@ function FormularioPostagem({ posts, getPosts}: FormularioPostagemProps) {
                     }
                 </button>
                 <div className="lg:hidden fixed bottom- left-4 flex items-center">
-                <Link to='/postagens'>
-                <ArrowCircleLeft size={48} weight="bold" />
-                </Link>
+                    <Link to='/postagens'>
+                        <ArrowCircleLeft size={48} weight="bold" />
+                    </Link>
                 </div>
             </form>
         </div>
