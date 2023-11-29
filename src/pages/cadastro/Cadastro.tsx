@@ -186,8 +186,8 @@ function Cadastro() {
                 value={tipoSelecionado}
               >
                 <option value="" disabled>Selecione um Tipo</option>
-                <option value="Profissional">Profissional</option>
-                <option value="Utilizador">Utilizador</option>
+                <option value="Ajudante">Ajudante</option>
+                <option value="Ajudado">Ajudado</option>
               </select>
             </div>
           </div>
